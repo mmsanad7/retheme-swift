@@ -1,0 +1,94 @@
+{
+  "name": "excp-swift-demo",
+  "description": "Retheme of the 'Abir Alqarat' recruitment app assets to Excellent Protection (الحماية المتميزة)",
+  "sourceDir": "input",
+  "outputDir": "output",
+
+  "brand": {
+    "nameAr": "الحماية المتميزة",
+    "nameEn": "Excellent Protection",
+    "primary": "#21A085",
+    "secondary": "#B1C91F",
+    "logoColor": "brand/logo-color.png",
+    "logoWhite": "brand/logo-white.png"
+  },
+
+  "svg": {
+    "colorMap": {
+      "#224182": "#21A085",
+      "#1C3B7B": "#1E9079",
+      "#1C366E": "#1B8670",
+      "#19336B": "#1A806A",
+      "#12AAE3": "#B1C91F",
+      "#1BAAE2": "#B1C91F",
+      "#1194C7": "#9AB01B",
+      "#1F9ECF": "#A5BC1D",
+      "#8DC43E": "#B1C91F",
+      "#84B63C": "#A3B91C",
+      "#85B355": "#A3B91C",
+      "#EDF3FD": "#EAF6F3",
+      "#C3D8F8": "#C1E6DE",
+      "#D0DAED": "#CDE9E2",
+      "#A2C1DA": "#A9DACE"
+    },
+    "fileOverrides": {
+      "icon/choose_worker_branch.svg": { "#F9ED34": "#D8E48F", "#FBAF40": "#21A085" }
+    },
+    "skip": ["images/auth/brand_logo.svg"]
+  },
+
+  "raster": {
+    "tolerance": 20,
+    "colorMap": {
+      "#224182": "#21A085",
+      "#1C346C": "#1A806A",
+      "#12AAE3": "#B1C91F",
+      "#1BAAE2": "#B1C91F",
+      "#00B4FC": "#B1C91F",
+      "#1C8CC8": "#A5BC1D",
+      "#2088B4": "#93A81A",
+      "#0C84B4": "#93A81A",
+      "#8DC43E": "#B1C91F"
+    },
+    "files": [
+      "icon/empty_icon.png",
+      "images/add_ticket.png",
+      "images/support_hub/support_hub_hero.png",
+      "images/location_prompt_hero.png",
+      "images/onboarding_1.png",
+      "images/onboarding_2.png",
+      "images/onboarding_3.png"
+    ]
+  },
+
+  "logos": [
+    { "file": "images/logo.png",       "type": "png-canvas", "width": 723, "height": 720, "fill": 0.9, "logo": "color" },
+    { "file": "lottie_files/logo.png", "type": "png-canvas", "width": 723, "height": 720, "fill": 0.9, "logo": "color" },
+    { "file": "images/auth/brand_logo.svg", "type": "svg-embed", "width": 241, "height": 240, "renderScale": 4, "fill": 0.96,
+      "logo": "color", "whiteText": true, "textGap": 8 }
+  ],
+
+  "banners": {
+    "darkColor": "#0B4A3E",
+    "fonts": {
+      "Neo":   { "file": "fonts/alfont_com_NeoSansW23-Bold.ttf" },
+      "Cairo": { "file": "fonts/Cairo-VariableFont_slntwght.ttf", "weight": "200 1000" }
+    },
+    "items": [
+      { "file": "images/slider1.png", "width": 1050, "height": 690, "template": "banners/slider1.html",
+        "hueShift": [
+          { "from": 186, "to": 226, "soft": 4, "minSat": 0.2,  "target": 72,  "satMul": 1.0 },
+          { "from": 229, "to": 300, "soft": 3, "minSat": 0.12, "target": 168, "satMul": 1.05 }
+        ],
+        "extract": [ { "name": "musaned", "x": 440, "y": 570, "w": 170, "h": 70, "lo": 100, "hi": 230 } ] },
+      { "file": "images/slider2.png", "width": 1050, "height": 690, "template": "banners/slider2.html",
+        "hueShift": [ { "from": 218, "to": 295, "soft": 6, "minSat": 0.12, "target": 168, "satMul": 1.05 } ] },
+      { "file": "images/slider3.png", "width": 1050, "height": 690, "template": "banners/slider3.html",
+        "hueShift": [ { "from": 238, "to": 295, "soft": 8, "minSat": 0.12, "target": 168, "satMul": 1.05 } ] },
+      { "file": "images/slider4.png", "width": 1050, "height": 690, "template": "banners/slider4.html",
+        "hueShift": [ { "from": 238, "to": 295, "soft": 8, "minSat": 0.12, "target": 168, "satMul": 1.05 } ] },
+      { "file": "images/default_slider.jpeg", "width": 1592, "height": 816, "template": "banners/default_slider.html", "jpegQuality": 92,
+        "hueShift": [ { "from": 200, "to": 245, "soft": 15, "minSat": 0.12, "target": 168, "satMul": 1.0 } ] }
+    ]
+  }
+}

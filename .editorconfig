@@ -1,0 +1,19 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{ps1,cs}]
+end_of_line = crlf
+# keep .ps1 ASCII-only (PowerShell 5.1 + no BOM = ANSI). See docs/troubleshooting.md
+
+[*.{md,json,html}]
+end_of_line = lf
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

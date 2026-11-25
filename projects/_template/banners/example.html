@@ -1,0 +1,19 @@
+<!-- example.html - banner template. Rendered by tools/Render-Banners.ps1 inside a div of the banner size.
+     Write the old text/logo positions here (pixels) so the next person knows what each layer hides.
+     Placeholders: {{BG}} {{SRC}} {{LOGO_WHITE}} {{LOGO_COLOR}} {{EXTRACT:name}} {{NAME_AR}} {{NAME_EN}} {{PRIMARY}} {{SECONDARY}} {{DARK}}
+     Classes: .abs .center .neo .cai .lime .pill   (see docs/configuration.md) -->
+
+<!-- 1) fully opaque band over the old text (opaque BEFORE the first old line, or a ghost shows) -->
+<div class="abs" style="left:0;right:0;top:420px;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 0,{{DARK}} 40px,{{DARK}} 100%)"></div>
+
+<!-- 2) new logo -->
+<img class="abs" src="{{LOGO_WHITE}}" style="left:24px;top:24px;height:40px">
+
+<!-- 3) new text -->
+<div class="abs center" style="top:470px">
+  <div class="neo" style="font-size:72px">العنوان الرئيسي</div>
+  <div class="pill" style="font-size:32px;margin-top:12px">سطر فرعي مع {{NAME_AR}}</div>
+</div>
+
+<!-- 4) restore an area from the original (e.g. third-party logos hit by the hue shift) -->
+<!-- <div class="abs" style="left:Xpx;top:Ypx;width:Wpx;height:Hpx;background:url('{{SRC}}') -Xpx -Ypx no-repeat"></div> -->

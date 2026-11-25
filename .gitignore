@@ -1,0 +1,34 @@
+# ---- Client files: NEVER commit (public repo, see docs/decisions/0001) ----
+projects/*/brand/
+projects/*/input/
+projects/*/output/
+projects/*/.work/
+projects/*/project.local.json
+
+# any client image/font/archive that slips into projects/
+projects/**/*.png
+projects/**/*.jpg
+projects/**/*.jpeg
+projects/**/*.webp
+projects/**/*.gif
+projects/**/*.svg
+projects/**/*.ttf
+projects/**/*.otf
+projects/**/*.zip
+projects/**/*.rar
+
+# ---- Tool scratch ----
+.work/
+*.shot.png
+chrome-profile/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---- Claude Code per-machine settings (CLAUDE.md and memory/ ARE committed) ----
+.claude/settings.local.json

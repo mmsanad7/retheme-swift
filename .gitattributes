@@ -1,0 +1,15 @@
+# Normalize text, keep Windows line endings for PowerShell/C# (edited and run on Windows)
+* text=auto
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+*.cs   text eol=crlf
+*.md   text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+
+# Binary (in case any is added outside projects/)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.ttf  binary
+*.otf  binary

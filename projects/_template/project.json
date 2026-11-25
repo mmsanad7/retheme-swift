@@ -1,0 +1,50 @@
+{
+  "name": "CHANGE-ME",
+  "description": "Retheme of <old app> assets to <new brand>",
+  "sourceDir": "input",
+  "outputDir": "output",
+
+  "brand": {
+    "nameAr": "اسم الشركة بالعربي",
+    "nameEn": "Company Name",
+    "primary": "#000000",
+    "secondary": "#000000",
+    "logoColor": "brand/logo-color.png",
+    "logoWhite": "brand/logo-white.png"
+  },
+
+  "svg": {
+    "colorMap": {
+      "#OLDPRI": "#NEWPRI",
+      "#OLDSEC": "#NEWSEC"
+    },
+    "fileOverrides": {},
+    "skip": []
+  },
+
+  "raster": {
+    "tolerance": 20,
+    "colorMap": {
+      "#OLDPRI": "#NEWPRI",
+      "#OLDSEC": "#NEWSEC"
+    },
+    "files": []
+  },
+
+  "logos": [
+    { "file": "images/logo.png", "type": "png-canvas", "width": 723, "height": 720, "fill": 0.9, "logo": "color" }
+  ],
+
+  "banners": {
+    "darkColor": "#000000",
+    "fonts": {
+      "Neo":   { "file": "fonts/YOUR-HEADLINE-FONT.ttf" },
+      "Cairo": { "file": "fonts/YOUR-BODY-FONT.ttf", "weight": "200 1000" }
+    },
+    "items": [
+      { "file": "images/example_banner.png", "width": 1050, "height": 690, "template": "banners/example.html",
+        "hueShift": [ { "from": 238, "to": 295, "soft": 8, "minSat": 0.12, "target": 168, "satMul": 1.0 } ],
+        "extract": [] }
+    ]
+  }
+}
