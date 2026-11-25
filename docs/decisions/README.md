@@ -17,3 +17,5 @@
 | [0010](0010-non-brand-colors-unchanged.md) | الألوان اللي مش من اللوجو القديم بتتساب | مقبول |
 | [0011](0011-login-logo-white-text.md) | لوجو شاشة الدخول: الكتابة بيضا من نسخة اللوجو الأعلى دقة | مقبول |
 | [0012](0012-config-driven-projects.md) | كل مشروع بيتعرّف بـ project.json وقوالب، من غير كود | مقبول |
+| [0013](0013-svg-logos-stay-vector.md) | لوجو العميل لو SVG يفضل vector (`Convert-SvgLogo` + `svg-vector`) | مقبول |
+| [0014](0014-dark-secondary-banner-accents.md) | لو الثانوي غامق، ألوان التمييز في البانرات بتتحدد في الإعدادات | مقبول |

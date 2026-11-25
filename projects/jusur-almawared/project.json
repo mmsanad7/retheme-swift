@@ -1,0 +1,100 @@
+{
+  "name": "jusur-almawared",
+  "description": "Retheme of the 'Abir Alqarat' recruitment app assets to Jusur (جسور الموارد)",
+  "sourceDir": "input",
+  "outputDir": "output",
+
+  "brand": {
+    "nameAr": "جسور الموارد",
+    "nameEn": "Jusur",
+    "primary": "#4D3BD2",
+    "secondary": "#101A24",
+    "logoColor": "brand/logo-color.png",
+    "logoWhite": "brand/logo-white.png",
+    "logoSourceSvg": "https://jusuralmawared.com/brand/logo-ar.svg"
+  },
+
+  "svg": {
+    "colorMap": {
+      "#224182": "#4D3BD2",
+      "#1C3B7B": "#4837C3",
+      "#1C366E": "#4132B3",
+      "#19336B": "#3E2FA8",
+      "#12AAE3": "#101A24",
+      "#1BAAE2": "#101A24",
+      "#1194C7": "#0C141B",
+      "#1F9ECF": "#0C141B",
+      "#8DC43E": "#101A24",
+      "#84B63C": "#0C141B",
+      "#85B355": "#0C141B",
+      "#EDF3FD": "#EFEDFB",
+      "#C3D8F8": "#CFCAF3",
+      "#D0DAED": "#DBD8F6",
+      "#A2C1DA": "#C1BAEF"
+    },
+    "fileOverrides": {
+      "icon/choose_worker_branch.svg": { "#F9ED34": "#A69DE9", "#FBAF40": "#4D3BD2" }
+    },
+    "skip": ["images/auth/brand_logo.svg"]
+  },
+
+  "raster": {
+    "tolerance": 20,
+    "colorMap": {
+      "#224182": "#4D3BD2",
+      "#1C346C": "#3E2FA8",
+      "#12AAE3": "#101A24",
+      "#1BAAE2": "#101A24",
+      "#00B4FC": "#101A24",
+      "#1C8CC8": "#0C141B",
+      "#2088B4": "#0C141B",
+      "#0C84B4": "#0C141B",
+      "#8DC43E": "#101A24",
+      "#6CA41C": "#0C141B",
+      "#7CBC1C": "#0C141B"
+    },
+    "files": [
+      "icon/empty_icon.png",
+      "images/add_ticket.png",
+      "images/support_hub/support_hub_hero.png",
+      "images/location_prompt_hero.png",
+      "images/onboarding_1.png",
+      "images/onboarding_2.png",
+      "images/onboarding_3.png"
+    ]
+  },
+
+  "logos": [
+    { "file": "images/logo.png",       "type": "png-canvas", "width": 723, "height": 720, "fill": 0.9, "logo": "color" },
+    { "file": "lottie_files/logo.png", "type": "png-canvas", "width": 723, "height": 720, "fill": 0.9, "logo": "color" },
+    { "file": "images/auth/brand_logo.svg", "type": "svg-vector", "width": 241, "height": 240, "fill": 0.92,
+      "source": "brand/logo-white.svg", "viewBox": "280 250 520 580" }
+  ],
+
+  "banners": {
+    "darkColor": "#101A24",
+    "accentColor": "#A99DF2",
+    "pillBackground": "#4D3BD2",
+    "pillText": "#FFFFFF",
+    "fonts": {
+      "Neo":   { "file": "fonts/alfont_com_NeoSansW23-Bold.ttf" },
+      "Cairo": { "file": "fonts/Cairo-VariableFont_slntwght.ttf", "weight": "200 1000" }
+    },
+    "items": [
+      { "file": "images/slider1.png", "width": 1050, "height": 690, "template": "banners/slider1.html",
+        "hueShift": [
+          { "from": 186, "to": 226, "soft": 4, "minSat": 0.2,  "target": 252, "satMul": 1.0 },
+          { "from": 229, "to": 300, "soft": 3, "minSat": 0.12, "target": 247, "satMul": 1.3 }
+        ],
+        "extract": [ { "name": "musaned", "x": 440, "y": 570, "w": 170, "h": 70, "lo": 100, "hi": 230 } ] },
+      { "file": "images/slider2.png", "width": 1050, "height": 690, "template": "banners/slider2.html",
+        "hueShift": [ { "from": 218, "to": 295, "soft": 6, "minSat": 0.12, "target": 247, "satMul": 1.2 } ] },
+      { "file": "images/slider3.png", "width": 1050, "height": 690, "template": "banners/slider3.html",
+        "hueShift": [ { "from": 238, "to": 295, "soft": 8, "minSat": 0.12, "target": 247, "satMul": 1.2 } ] },
+      { "file": "images/slider4.png", "width": 1050, "height": 690, "template": "banners/slider4.html",
+        "hueShift": [ { "from": 238, "to": 295, "soft": 8, "minSat": 0.12, "target": 247, "satMul": 1.2 } ] },
+      { "file": "images/default_slider.jpeg", "width": 1592, "height": 816, "template": "banners/default_slider.html", "jpegQuality": 92,
+        "hueShift": [ { "from": 200, "to": 245, "soft": 15, "minSat": 0.12, "target": 247, "satMul": 1.1 } ] }
+    ]
+  }
+}

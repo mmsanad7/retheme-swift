@@ -16,6 +16,7 @@
 ## الأوامر
 
 ```powershell
+.\tools\Convert-SvgLogo.ps1 -Svg brand\logo.svg -Out brand\logo-white.png -White   # لوجو SVG
 .\tools\Get-ColorReport.ps1 -Project <name> -OldBrand <hex,hex>   # تحليل
 .\tools\Invoke-Retheme.ps1  -Project <name> -Force                # بناء
 .\tools\Render-Banners.ps1  -Project <name> [-Only slider1.png]   # بانرات

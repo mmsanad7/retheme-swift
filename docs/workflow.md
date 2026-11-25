@@ -16,6 +16,15 @@
 Copy-Item projects\_template projects\<name> -Recurse
 ```
 
+لو اللوجو SVG، اعمل منه ملفات PNG ونسخة بيضا ([ADR 0013](decisions/0013-svg-logos-stay-vector.md)):
+```powershell
+.\tools\Convert-SvgLogo.ps1 -Svg projects\<name>\brand\logo.svg -Out projects\<name>\brand\logo-color.png
+.\tools\Convert-SvgLogo.ps1 -Svg projects\<name>\brand\logo.svg -Out projects\<name>\brand\logo-white.png -White -WhiteSvgOut projects\<name>\brand\logo-white.svg
+```
+
+**لو الثانوي الجديد غامق:** حدد `accentColor` و`pillBackground` و`pillText` في `banners`، وخلي بالك إن الخلفيات الفاتحة في الرسومات هتبقى رمادي ([ADR 0014](decisions/0014-dark-secondary-banner-accents.md)).
+**لو اللوجو طولي (مربع تقريبًا):** كبّر ارتفاع `<img>` في القوالب (في جسور الموارد: 92 لحد 136 بكسل بدل 40).
+
 ## 1. التحليل
 ```powershell
 .\tools\Get-ColorReport.ps1 -Project <name> -OldBrand <ألوان اللوجو القديم> -OutFile projects\<name>\.work\colors.md

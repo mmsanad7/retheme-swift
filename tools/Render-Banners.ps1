@@ -48,6 +48,10 @@ foreach ($f in $cfg.banners.fonts.PSObject.Properties) {
     $fontCss += "@font-face{font-family:$($f.Name);src:url(data:font/ttf;base64,$b64)$weight}`n"
 }
 $primary = $cfg.brand.primary; $secondary = $cfg.brand.secondary; $dark = $cfg.banners.darkColor
+# accent / pill colors default to the secondary color (light secondary brands); override them when the secondary is dark
+$accent   = if ($cfg.banners.accentColor)    { $cfg.banners.accentColor }    else { $secondary }
+$pillBg   = if ($cfg.banners.pillBackground) { $cfg.banners.pillBackground } else { $secondary }
+$pillText = if ($cfg.banners.pillText)       { $cfg.banners.pillText }       else { $dark }
 $baseCss = @"
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow:hidden;background:#000}
@@ -56,8 +60,8 @@ html,body{overflow:hidden;background:#000}
 .abs{position:absolute}
 .neo{font-family:Neo;color:#fff;line-height:1.15}
 .cai{font-family:Cairo;color:#fff}
-.lime{color:$secondary}
-.pill{display:inline-block;background:$secondary;color:$dark;font-family:Cairo;font-weight:800;padding:4px 22px 8px;border-radius:10px}
+.lime{color:$accent}
+.pill{display:inline-block;background:$pillBg;color:$pillText;font-family:Cairo;font-weight:800;padding:4px 22px 8px;border-radius:10px}
 .center{left:0;right:0;text-align:center}
 "@
 
@@ -90,7 +94,7 @@ foreach ($b in @($cfg.banners.items)) {
     $html = $html.Replace('{{BG}}', (Get-FileUri $bg)).Replace('{{SRC}}', (Get-FileUri $orig))
     $html = $html.Replace('{{LOGO_WHITE}}', $logoW).Replace('{{LOGO_COLOR}}', $logoC)
     $html = $html.Replace('{{NAME_AR}}', $cfg.brand.nameAr).Replace('{{NAME_EN}}', $cfg.brand.nameEn)
-    $html = $html.Replace('{{PRIMARY}}', $primary).Replace('{{SECONDARY}}', $secondary).Replace('{{DARK}}', $dark)
+    $html = $html.Replace('{{PRIMARY}}', $primary).Replace('{{SECONDARY}}', $secondary).Replace('{{DARK}}', $dark).Replace('{{ACCENT}}', $accent)
     $W = [int]$b.width; $H = [int]$b.height
     $page = "<!doctype html><html><head><meta charset='utf-8'><style>$fontCss$baseCss body{width:${W}px;height:${H}px} .c{width:${W}px;height:${H}px}</style></head>" +
             "<body><div class='c'><img class='bg' src='$(Get-FileUri $bg)' width='$W' height='$H'>$html</div></body></html>"

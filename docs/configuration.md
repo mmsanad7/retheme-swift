@@ -55,6 +55,15 @@
 | `whiteText` | true/false | يخلي الكتابة اللي جنب الرمز بيضا ويسيب ألوان الرمز. مفيد للخلفيات الغامقة لو مفيش نسخة بيضا كويسة |
 | `textGap` | رقم | أقل عرض (بالبكسل) للفراغ اللي بين الرمز والكتابة. خليه 8 |
 | `renderScale` | رقم | للـ `svg-embed` بس (الافتراضي 4) |
+| | `svg-vector` | SVG بنفس الأبعاد، وجواه لوجو العميل بصيغة **vector** ([ADR 0013](decisions/0013-svg-logos-stay-vector.md)) |
+| `source` | مسار | للـ `svg-vector` بس: ملف SVG اللوجو (زي `brand/logo-white.svg`) |
+| `viewBox` | نص | للـ `svg-vector` بس: `"x y w h"`، يعني حدود اللوجو جوه ملف SVG بتاعه. احسبها من الـ content box اللي `Convert-SvgLogo` بيطبعه |
+
+> **لوجو العميل SVG؟** اعمل منه `logo-color.png` و`logo-white.png` و`logo-white.svg` الأول:
+> ```powershell
+> .\tools\Convert-SvgLogo.ps1 -Svg brand\logo.svg -Out brand\logo-color.png
+> .\tools\Convert-SvgLogo.ps1 -Svg brand\logo.svg -Out brand\logo-white.png -White -WhiteSvgOut brand\logo-white.svg
+> ```
 
 ## `banners`
 
@@ -63,6 +72,8 @@
 | `darkColor` | لون غامق من نفس عيلة الأساسي، للخلفيات وكتابة الـ pill. بيتحط مكان `{{DARK}}` |
 | `fonts` | `{ "اسم-العائلة": { "file": "مسار جوه sourceDir", "weight": "200 1000" } }`. الخطوط بتتحط جوه الصفحة كـ base64 |
 | `chrome` | (اختياري) مسار Chrome أو Edge لو مش في المكان المعتاد |
+| `accentColor` | (اختياري) لون الكلام المميز (`.lime` و`{{ACCENT}}`). الافتراضي: `secondary` |
+| `pillBackground` / `pillText` | (اختياري) لون الشريط (`.pill`) ولون الكتابة عليه. الافتراضي: `secondary` / `darkColor`. استخدمهم لو الثانوي غامق ([ADR 0014](decisions/0014-dark-secondary-banner-accents.md)) |
 | `items[]` | بانر لكل عنصر، والخانات بتاعته في الجدول اللي تحت |
 
 ### `banners.items[]`
@@ -85,7 +96,7 @@
 | `{{LOGO_WHITE}}` / `{{LOGO_COLOR}}` | اللوجوهات |
 | `{{EXTRACT:name}}` | القصاصة اللي في `extract` |
 | `{{NAME_AR}}` / `{{NAME_EN}}` | اسم الشركة |
-| `{{PRIMARY}}` / `{{SECONDARY}}` / `{{DARK}}` | الألوان |
+| `{{PRIMARY}}` / `{{SECONDARY}}` / `{{DARK}}` / `{{ACCENT}}` | الألوان |
 
 ### classes جاهزة في القالب
 `.abs` (position absolute)، `.center` (عرض كامل والنص في النص)، `.neo` (خط Neo أبيض)، `.cai` (خط Cairo أبيض)، `.lime` (لون الـ secondary)، `.pill` (شريط بلون الـ secondary والكتابة بالـ `darkColor`).

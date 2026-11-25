@@ -96,6 +96,22 @@ foreach ($l in @($cfg.logos)) {
         Write-Utf8 $out $svg
         Write-Output "[4/4] Logo $rel : svg $($l.width)x$($l.height) (embedded png x$scale, logo drawn $d)"
     }
+    elseif ($l.type -eq 'svg-vector') {
+        # keep the logo as vectors: nest the client's SVG (cropped to l.viewBox) centered in the original canvas
+        $srcSvg = Resolve-ProjectPath $cfg._dir $l.source
+        $t = [IO.File]::ReadAllText($srcSvg, [Text.Encoding]::UTF8)
+        $open = [regex]::Match($t, '<svg\b[^>]*>'); $close = $t.LastIndexOf('</svg>')
+        if (-not $open.Success -or $close -lt 0) { throw "Not an SVG: $srcSvg" }
+        $inner = $t.Substring($open.Index + $open.Length, $close - $open.Index - $open.Length)
+        $vb = if ($l.viewBox) { $l.viewBox } else { [regex]::Match($open.Value, 'viewBox="([^"]+)"').Groups[1].Value }
+        $W = [double]$l.width; $H = [double]$l.height; $f = [double]$l.fill
+        $iw = $W * $f; $ih = $H * $f; $ix = ($W - $iw) / 2; $iy = ($H - $ih) / 2
+        $ci = [Globalization.CultureInfo]::InvariantCulture
+        $svg = [string]::Format($ci, "<svg xmlns=`"http://www.w3.org/2000/svg`" xmlns:xlink=`"http://www.w3.org/1999/xlink`" width=`"{0}`" height=`"{1}`" viewBox=`"0 0 {0} {1}`">`n<svg x=`"{2:0.##}`" y=`"{3:0.##}`" width=`"{4:0.##}`" height=`"{5:0.##}`" viewBox=`"{6}`" preserveAspectRatio=`"xMidYMid meet`">{7}</svg>`n</svg>`n",
+            $l.width, $l.height, $ix, $iy, $iw, $ih, $vb, $inner)
+        Write-Utf8 $out $svg
+        Write-Output "[4/4] Logo $rel : vector svg $($l.width)x$($l.height) from $($l.source) (viewBox $vb)"
+    }
     else { throw "Unknown logo type '$($l.type)' for $rel" }
 }
 Write-Output "Done. Next: tools\Render-Banners.ps1 -Project $Project, then tools\Compare-Assets.ps1 -Project $Project"

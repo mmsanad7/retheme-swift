@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-25
+
+### اتضاف
+- `tools/Convert-SvgLogo.ps1`: بيحوّل لوجو SVG لـ PNG شفاف مقصوص بدقة عالية، ونسخة بيضا (PNG وSVG).
+- `Recolor.Trim`: قص الصورة على حدود المحتوى.
+- نوع لوجو `svg-vector` في `Invoke-Retheme.ps1`، عشان اللوجو يفضل vector ([ADR 0013](docs/decisions/0013-svg-logos-stay-vector.md)).
+- `banners.accentColor` و`pillBackground` و`pillText`، وplaceholder `{{ACCENT}}`، للبراندات اللي الثانوي فيها غامق ([ADR 0014](docs/decisions/0014-dark-secondary-banner-accents.md)).
+- مشروع `jusur-almawared` (جسور الموارد): 75 ملف اتعدل من 204.
+
+### اتأكدنا
+- excp-swift-demo لسه بيطلع نفس الملفات بالـ byte بعد التعديلات (0 فرق).
+
 ## [1.0.0] - 2026-11-25
 
 ### اتضاف

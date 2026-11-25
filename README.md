@@ -47,13 +47,15 @@ retheme-swift/
 ├── tools/                    ← الأدوات (PowerShell + C#)
 │   ├── Recolor.cs            ← معالجة الصور (بيتعمله compile وقت التشغيل)
 │   ├── _common.ps1           ← دوال مشتركة
+│   ├── Convert-SvgLogo.ps1   ← الخطوة 0: لوجو SVG ← PNG شفاف ونسخة بيضا
 │   ├── Get-ColorReport.ps1   ← الخطوة 1: تحليل الألوان
 │   ├── Invoke-Retheme.ps1    ← الخطوة 2: نسخ + ألوان SVG + صور + لوجوهات
 │   ├── Render-Banners.ps1    ← الخطوة 3: إعادة تصميم البانرات
 │   └── Compare-Assets.ps1    ← الخطوة 4: تقرير الملفات المتغيرة
 ├── projects/
 │   ├── _template/            ← قالب لأي مشروع جديد
-│   └── excp-swift-demo/      ← أول مشروع (project.json + قوالب البانرات)
+│   ├── excp-swift-demo/      ← الحماية المتميزة
+│   └── jusur-almawared/      ← جسور الموارد
 ├── docs/                     ← التوثيق الكامل
 │   ├── decisions/            ← سجل القرارات (ADRs)
 │   └── projects/             ← تقرير لكل مشروع اتعمل
@@ -79,6 +81,7 @@ retheme-swift/
 | المشروع | العميل / الهوية | التاريخ | التقرير |
 |---|---|---|---|
 | `excp-swift-demo` | الحماية المتميزة (Excellent Protection) | 2026-11-25 | [التقرير](docs/projects/excp-swift-demo/README.md) |
+| `jusur-almawared` | جسور الموارد (Jusur) | 2026-11-25 | [التقرير](docs/projects/jusur-almawared/README.md) |
 
 ## الترخيص
 

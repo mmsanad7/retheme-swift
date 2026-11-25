@@ -237,6 +237,25 @@ public static class Recolor
         }
     }
 
+    // Crop to the bounding box of visible pixels (alpha > 8) plus a margin. Returns "x,y,w,h" of the content box.
+    public static string Trim(string inPath, string outPath, int margin) {
+        using (var bmp = Load(inPath)) {
+            BitmapData data; byte[] buf = Bytes(bmp, out data); bmp.UnlockBits(data);
+            int minX = bmp.Width, minY = bmp.Height, maxX = -1, maxY = -1;
+            for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Width; x++)
+                    if (buf[y * data.Stride + x * 4 + 3] > 8) {
+                        if (x < minX) minX = x; if (x > maxX) maxX = x;
+                        if (y < minY) minY = y; if (y > maxY) maxY = y;
+                    }
+            if (maxX < 0) throw new Exception("image is fully transparent: " + inPath);
+            int x0 = Math.Max(0, minX - margin), y0 = Math.Max(0, minY - margin);
+            int x1 = Math.Min(bmp.Width - 1, maxX + margin), y1 = Math.Min(bmp.Height - 1, maxY + margin);
+            using (var c = bmp.Clone(new Rectangle(x0, y0, x1 - x0 + 1, y1 - y0 + 1), PixelFormat.Format32bppArgb)) c.Save(outPath, ImageFormat.Png);
+            return minX + "," + minY + "," + (maxX - minX + 1) + "," + (maxY - minY + 1);
+        }
+    }
+
     public static string Info(string path) {
         using (var bmp = Load(path)) {
             BitmapData data; byte[] buf = Bytes(bmp, out data);
