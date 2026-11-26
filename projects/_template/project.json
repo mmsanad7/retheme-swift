@@ -42,8 +42,8 @@
   "banners": {
     "darkColor": "#000000",
     "fonts": {
-      "Neo":   { "file": "fonts/YOUR-HEADLINE-FONT.ttf" },
-      "Cairo": { "file": "fonts/YOUR-BODY-FONT.ttf", "weight": "200 1000" }
+      "Neo":   { "brandFile": "brand/BRAND-ARABIC-FONT.ttf", "weight": "100 900" },
+      "Cairo": { "brandFile": "brand/BRAND-ARABIC-FONT.ttf", "weight": "100 900" }
     },
     "items": [
       { "file": "images/example_banner.png", "width": 1050, "height": 690, "template": "banners/example.html",

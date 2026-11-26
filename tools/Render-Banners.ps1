@@ -26,6 +26,7 @@ param(
 Import-Recolor
 
 $cfg = Get-RethemeConfig $Project
+Assert-BrandFonts $cfg -Banners
 $src = $cfg._source; $dst = $cfg._output; $work = Join-Path $cfg._work 'banners'
 if (-not (Test-Path $dst)) { throw "outputDir not found, run Invoke-Retheme.ps1 first: $dst" }
 New-Item -ItemType Directory -Force $work | Out-Null
@@ -41,11 +42,19 @@ if (-not $chrome) { throw 'Chrome/Edge not found. Set banners.chrome in project.
 
 # fonts are embedded as base64 (file:// font loading is blocked by CORS in Chrome)
 $fontCss = ''
+# brandFile = brand font in the project folder (e.g. brand/Kufam.ttf); file = legacy app font inside sourceDir
 foreach ($f in $cfg.banners.fonts.PSObject.Properties) {
-    $fp = Resolve-ProjectPath $src $f.Value.file
+    if ($f.Value.brandFile) {
+        $fp = Resolve-ProjectPath $cfg._dir $f.Value.brandFile
+        $mime = 'font/' + ([IO.Path]::GetExtension($fp).TrimStart('.').ToLower())
+    } else {
+        $fp = Resolve-ProjectPath $src $f.Value.file
+        $mime = 'font/ttf'
+    }
+    if (-not (Test-Path $fp)) { throw "Font file not found for banners.fonts.$($f.Name): $fp" }
     $b64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes($fp))
     $weight = if ($f.Value.weight) { ";font-weight:$($f.Value.weight)" } else { '' }
-    $fontCss += "@font-face{font-family:$($f.Name);src:url(data:font/ttf;base64,$b64)$weight}`n"
+    $fontCss += "@font-face{font-family:$($f.Name);src:url(data:$mime;base64,$b64)$weight}`n"
 }
 $primary = $cfg.brand.primary; $secondary = $cfg.brand.secondary; $dark = $cfg.banners.darkColor
 # accent / pill colors default to the secondary color (light secondary brands); override them when the secondary is dark

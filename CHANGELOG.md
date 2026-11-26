@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### اتغير (ممكن يكسر مشاريع قديمة)
+- **خطوط الهوية إلزامية** ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)): `Invoke-Retheme` بيرفض أي مشروع من غير `brand.fonts`، و`Render-Banners` بيرفض أي خط بانر مش `brandFile`، والـ pre-commit وCI بيفحصوا `brand.fonts`. خانة `brandFile` جديدة في `banners.fonts`. `excp-swift-demo` معاه استثناء (`legacyNoBrandFonts`).
+
 ### اتضاف
 - خطوط هوية جسور الموارد (Kufam عربي وMontserrat إنجليزي) في [handoff.md](docs/projects/jusur-almawared/handoff.md) و[تقرير المشروع](docs/projects/jusur-almawared/README.md) و`project.json`، وخانة `brand.fonts` في [configuration.md](docs/configuration.md)، وخطوة الخطوط في [workflow.md](docs/workflow.md).
 - [`docs/projects/jusur-almawared/handoff.md`](docs/projects/jusur-almawared/handoff.md): ملف تسليم لفريق التطوير، وخطوة الـ handoff اتضافت في [workflow.md](docs/workflow.md).

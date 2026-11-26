@@ -32,6 +32,14 @@ try {
         }
     }
 
+    # Rule: every project declares its brand fonts (ADR 0016). Using them in banners is enforced by Render-Banners.ps1.
+    . (Join-Path $PSScriptRoot '_common.ps1')
+    foreach ($pj in Get-ChildItem (Join-Path $repo 'projects') -Directory | Where-Object { $_.Name -ne '_template' }) {
+        if (-not (Test-Path (Join-Path $pj.FullName 'project.json'))) { continue }
+        $cfg = Read-Utf8Json (Join-Path $pj.FullName 'project.json')
+        foreach ($p in @(Get-BrandFontProblems $cfg)) { $errors.Add("projects/$($pj.Name): $p (ADR 0016)") }
+    }
+
     if ($errors.Count) {
         Write-Host "Repo rules check FAILED:" -ForegroundColor Red
         $errors | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }

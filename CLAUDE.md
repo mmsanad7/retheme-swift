@@ -35,6 +35,7 @@
 8. أي قرار جديد يتسجل في `docs/decisions/` بالقالب، وأي درس جديد يتكتب في `memory/lessons-learned.md`.
 9. **`git pull` قبل أي تعديل، و`git push` بعده.** الريبو مشترك بين التيم ليد ورنا. الـ hooks في `.claude/settings.json` بتفرض ده ([ADR 0015](docs/decisions/0015-binding-rules-enforced.md)). لو الـ Stop hook وقفك، اعمل commit وpush أو قول للمستخدم ليه لازم يستنى.
 10. **أي اسم ملف أو عنصر في الرد يكون رابط** (markdown link)، مش اسم بس.
+11. **خطوط الهوية إلزامية:** ممنوع تبدأ مشروع من غير الخط العربي والإنجليزي (`brand.fonts` + ملف الخط في `brand/`)، وأي نص على الصور يتكتب بيهم ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)).
 
 ## طريقة التعامل مع المستخدم
 

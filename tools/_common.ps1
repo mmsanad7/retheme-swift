@@ -54,6 +54,28 @@ function Get-RethemeConfig([string]$Project) {
     return $cfg
 }
 
+# Brand fonts are mandatory (docs/decisions/0016-brand-fonts-mandatory.md): returns the list of problems.
+# -Banners also requires every banner font to be a brand font file (brandFile), not an app font.
+function Get-BrandFontProblems($cfg, [switch]$Banners) {
+    if ($cfg.legacyNoBrandFonts) { return @() }
+    $p = @()
+    foreach ($lang in 'ar', 'en') {
+        $f = $cfg.brand.fonts.$lang
+        if (-not $f -or -not $f.family -or -not $f.source) { $p += "brand.fonts.$lang (family + source) is missing" }
+    }
+    if ($Banners -and $cfg.banners) {
+        foreach ($f in $cfg.banners.fonts.PSObject.Properties) {
+            if (-not $f.Value.brandFile) { $p += "banners.fonts.$($f.Name) uses an app font ('file'); banners must use the brand font ('brandFile')" }
+        }
+    }
+    return $p
+}
+
+function Assert-BrandFonts($cfg, [switch]$Banners) {
+    $p = @(Get-BrandFontProblems $cfg -Banners:$Banners)
+    if ($p.Count) { throw ("Brand fonts rule (ADR 0016) - {0}: {1}" -f $cfg.name, ($p -join '; ')) }
+}
+
 # PSCustomObject -> ordered hashtable with upper-case hex keys (no '#').
 function ConvertTo-ColorMap($obj) {
     $m = [ordered]@{}

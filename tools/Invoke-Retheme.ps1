@@ -23,6 +23,7 @@ param(
 Import-Recolor
 
 $cfg = Get-RethemeConfig $Project
+Assert-BrandFonts $cfg
 $src = $cfg._source; $dst = $cfg._output
 if (-not (Test-Path $src)) { throw "sourceDir not found: $src (set it in project.local.json)" }
 if ($src.TrimEnd('\') -ieq $dst.TrimEnd('\')) { throw 'outputDir must differ from sourceDir' }

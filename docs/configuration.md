@@ -22,7 +22,7 @@
 | `primary` / `secondary` | الألوان الجديدة. بتتحط مكان `{{PRIMARY}}` و`{{SECONDARY}}`، والـ class اللي اسمه `.lime` و`.pill` بيستخدموا `secondary` |
 | `logoColor` | اللوجو الملون (PNG شفاف) |
 | `logoWhite` | اللوجو للخلفيات الغامقة |
-| `fonts` | خطوط الهوية: `{ "ar": {...}, "en": {...} }`، وكل واحد فيه `family` (اسم الخط) و`source` (رابط تنزيله) و`cssName` (اختياري: اسمه في CSS موقع العميل). **توثيق بس**: الأدوات مش بتستخدمه، بس لازم يتملا عشان يتنقل لملف `handoff.md` |
+| `fonts` | خطوط الهوية: `{ "ar": {...}, "en": {...} }`، وكل واحد فيه `family` (اسم الخط) و`source` (رابط تنزيله) و`cssName` (اختياري: اسمه في CSS موقع العميل). **إلزامي** ([ADR 0016](decisions/0016-brand-fonts-mandatory.md)): `Invoke-Retheme` والـ pre-commit بيرفضوا أي مشروع من غيره |
 
 ## `svg`
 
@@ -71,7 +71,8 @@
 | الخانة | الوصف |
 |---|---|
 | `darkColor` | لون غامق من نفس عيلة الأساسي، للخلفيات وكتابة الـ pill. بيتحط مكان `{{DARK}}` |
-| `fonts` | `{ "اسم-العائلة": { "file": "مسار جوه sourceDir", "weight": "200 1000" } }`. الخطوط بتتحط جوه الصفحة كـ base64 |
+| `fonts` | `{ "اسم-العائلة": { "brandFile": "brand/Kufam.ttf", "weight": "100 900" } }`. `brandFile` هو ملف خط الهوية جوه فولدر المشروع، وده **إلزامي** ([ADR 0016](decisions/0016-brand-fonts-mandatory.md)): `Render-Banners` بيرفض `file` (خط من خطوط التطبيق القديم). الاسمين `Neo` و`Cairo` هما اللي الـ classes `.neo` و`.cai` و`.pill` بتستخدمهم، فخليهم يشاوروا على خط الهوية. الخطوط بتتحط جوه الصفحة كـ base64 |
+| `legacyNoBrandFonts` | (في أول الملف، مش جوه `banners`) لـ `excp-swift-demo` بس، لأنه اتعمل قبل [ADR 0016](decisions/0016-brand-fonts-mandatory.md). **ممنوع في أي مشروع جديد** |
 | `chrome` | (اختياري) مسار Chrome أو Edge لو مش في المكان المعتاد |
 | `accentColor` | (اختياري) لون الكلام المميز (`.lime` و`{{ACCENT}}`). الافتراضي: `secondary` |
 | `pillBackground` / `pillText` | (اختياري) لون الشريط (`.pill`) ولون الكتابة عليه. الافتراضي: `secondary` / `darkColor`. استخدمهم لو الثانوي غامق ([ADR 0014](decisions/0014-dark-secondary-banner-accents.md)) |

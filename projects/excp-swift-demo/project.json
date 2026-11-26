@@ -3,6 +3,7 @@
   "description": "Retheme of the 'Abir Alqarat' recruitment app assets to Excellent Protection (الحماية المتميزة)",
   "sourceDir": "input",
   "outputDir": "output",
+  "legacyNoBrandFonts": true,
 
   "brand": {
     "nameAr": "الحماية المتميزة",
