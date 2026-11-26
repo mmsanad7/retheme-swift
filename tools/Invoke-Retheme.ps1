@@ -115,4 +115,16 @@ foreach ($l in @($cfg.logos)) {
     }
     else { throw "Unknown logo type '$($l.type)' for $rel" }
 }
+
+# 5) added files (explicit exception to "same files as the source", see docs/decisions/0017-deliver-brand-fonts-in-assets.md)
+foreach ($a in @($cfg.addFiles)) {
+    if (-not $a) { continue }
+    $from = Resolve-ProjectPath $cfg._dir $a.from
+    if (-not (Test-Path $from)) { throw "addFiles source missing: $from (brand/ is git-ignored, copy it in first)" }
+    $to = Join-Path $dst ($a.to -replace '/', '\')
+    if (Test-Path $to) { throw "addFiles target already exists in the source assets: $($a.to) (addFiles never overwrites)" }
+    New-Item -ItemType Directory -Force (Split-Path -Parent $to) | Out-Null
+    Copy-Item $from $to
+    Write-Output "[5/5] Added $($a.to)"
+}
 Write-Output "Done. Next: tools\Render-Banners.ps1 -Project $Project, then tools\Compare-Assets.ps1 -Project $Project"

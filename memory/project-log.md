@@ -9,7 +9,11 @@
 | 2026-11-26 | jusur-almawared | اتضاف [handoff.md](../docs/projects/jusur-almawared/handoff.md) لفريق التطوير: الهوية، والتسليم، والمطلوب في الكود. |
 | 2026-11-26 | jusur-almawared | ✅ رنا عادت البانرات الخمسة بخط **Kufam** (و"100%" بخط Montserrat)، وده بيقفل طلب التيم ليد. اتسلمت تاني في `assets.jusuralmawared.zip`. |
 
+| 2026-11-26 | jusur-almawared | بطلب رنا، خطين Kufam وMontserrat اتضافوا جوه `fonts/` في الـ assets (`addFiles`، [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md)). الناتج بقى 206 ملف، و`assets.jusuralmawared.zip` اتعمل من جديد. |
+
 ## حاجات مفتوحة / متابعة
+
+- [ ] **❓ للتيم ليد:** [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md) (الخطوط جوه الـ assets) استثناء من ADR 0008، ورنا قررته. محتاج تأكيدك. لو مش موافق، نشيل `addFiles` ونبعت الخطوط في zip منفصل.
 
 - [ ] **jusur:** الدوائر الفاتحة ورا الرسومات بقت رمادي، بسبب الثانوي الغامق. لو صاحب الشغل عايزها بنفسجي فاتح، هنحتاج نضيف `tintColorMap` للأداة.
 

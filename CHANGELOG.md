@@ -9,6 +9,7 @@
 - **jusur-almawared:** البانرات الخمسة اتعادت بخط Kufam (`brandFile`)، و"100%" بخط Montserrat (عيلة `En`). العناوين بوزن 800، والمسافة بين الكلمات `.14em` لأن Kufam ضيق.
 
 ### اتضاف
+- خانة `addFiles` في `project.json`: بتضيف ملفات (زي خطوط الهوية) للناتج، ومش بتكتب فوق ملف موجود. `Compare-Assets` بيعدّها تحت بند "added on purpose" ([ADR 0017](docs/decisions/0017-deliver-brand-fonts-in-assets.md)). **jusur-almawared:** Kufam وMontserrat اتضافوا في `fonts/`.
 - خطوط هوية جسور الموارد (Kufam عربي وMontserrat إنجليزي) في [handoff.md](docs/projects/jusur-almawared/handoff.md) و[تقرير المشروع](docs/projects/jusur-almawared/README.md) و`project.json`، وخانة `brand.fonts` في [configuration.md](docs/configuration.md)، وخطوة الخطوط في [workflow.md](docs/workflow.md).
 - [`docs/projects/jusur-almawared/handoff.md`](docs/projects/jusur-almawared/handoff.md): ملف تسليم لفريق التطوير، وخطوة الـ handoff اتضافت في [workflow.md](docs/workflow.md).
 - قواعد الفريق في [memory/user-preferences.md](memory/user-preferences.md): pull قبل أي تعديل وpush بعده، والروابط في الردود.

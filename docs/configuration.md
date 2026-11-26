@@ -13,6 +13,7 @@
 | `description` | نص | وصف قصير |
 | `sourceDir` | مسار | فولدر الـ assets الأصلي. **ما بيتعدلش أبدًا** |
 | `outputDir` | مسار | الفولدر اللي هيطلع فيه الناتج. لازم يكون مختلف عن `sourceDir` |
+| `addFiles` | قائمة | (اختياري) `[{ "from": "brand/x.ttf", "to": "fonts/x.ttf" }]`: ملفات جديدة بتتضاف للناتج، زي خطوط الهوية. ما بتكتبش فوق ملف موجود ([ADR 0017](decisions/0017-deliver-brand-fonts-in-assets.md)) |
 
 ## `brand`
 

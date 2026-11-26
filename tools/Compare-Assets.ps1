@@ -20,6 +20,9 @@ function Get-Rel($root) {
 }
 $a = @(Get-Rel $src); $b = @(Get-Rel $dst)
 $missing = @($a | Where-Object { $b -notcontains $_ }); $extra = @($b | Where-Object { $a -notcontains $_ })
+# files declared in addFiles are intentional additions, not structure problems
+$declared = @(@($cfg.addFiles) | Where-Object { $_ } | ForEach-Object { $_.to -replace '\\', '/' })
+$added = @($extra | Where-Object { $declared -contains $_ }); $extra = @($extra | Where-Object { $declared -notcontains $_ })
 
 $changed = @(); $same = @()
 foreach ($r in $a) {
@@ -41,12 +44,17 @@ $sb = New-Object System.Text.StringBuilder
 [void]$sb.AppendLine("| Unchanged | $($same.Count) |")
 [void]$sb.AppendLine("| Missing in output | $($missing.Count) |")
 [void]$sb.AppendLine("| Extra in output | $($extra.Count) |")
+if ($added.Count) { [void]$sb.AppendLine("| Added on purpose (addFiles) | $($added.Count) |") }
 foreach ($k in 'SVG', 'Raster', 'Font', 'Other') {
     $c = @($changed | Where-Object { (Get-Kind $_) -eq $k }).Count; $u = @($same | Where-Object { (Get-Kind $_) -eq $k }).Count
     [void]$sb.AppendLine("| $k : changed / unchanged | $c / $u |")
 }
 [void]$sb.AppendLine(''); [void]$sb.AppendLine("## Changed ($($changed.Count))"); [void]$sb.AppendLine('')
 $changed | ForEach-Object { [void]$sb.AppendLine("- ``$_``") }
+if ($added.Count) {
+    [void]$sb.AppendLine(''); [void]$sb.AppendLine("## Added on purpose ($($added.Count))"); [void]$sb.AppendLine('')
+    $added | ForEach-Object { [void]$sb.AppendLine("- ``$_``") }
+}
 [void]$sb.AppendLine(''); [void]$sb.AppendLine("## Unchanged ($($same.Count))"); [void]$sb.AppendLine('')
 $same | ForEach-Object { [void]$sb.AppendLine("- ``$_``") }
 if ($missing.Count -or $extra.Count) {
@@ -56,5 +64,6 @@ if ($missing.Count -or $extra.Count) {
 }
 $report = $sb.ToString()
 if ($OutFile) { Write-Utf8 ([IO.Path]::GetFullPath((Join-Path (Get-Location) $OutFile))) $report; Write-Output "Report written: $OutFile" }
-Write-Output ("Total {0} | changed {1} | unchanged {2} | missing {3} | extra {4}" -f $a.Count, $changed.Count, $same.Count, $missing.Count, $extra.Count)
+$addedNote = if ($added.Count) { " | added $($added.Count)" } else { '' }
+Write-Output (("Total {0} | changed {1} | unchanged {2} | missing {3} | extra {4}" -f $a.Count, $changed.Count, $same.Count, $missing.Count, $extra.Count) + $addedNote)
 if ($missing.Count -or $extra.Count) { Write-Warning 'File names/structure differ between source and output!' }

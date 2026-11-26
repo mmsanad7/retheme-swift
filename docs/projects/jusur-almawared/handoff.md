@@ -39,7 +39,7 @@
 | **الإنجليزي** | **Montserrat** (Variable) | `fontEn` | [Google Fonts: Montserrat](https://fonts.google.com/specimen/Montserrat) |
 
 > الخطين مجانيين (رخصة OFL)، ومأخوذين من CSS موقع [jusuralmawared.com](https://jusuralmawared.com) (`Kufam_Variable.woff2` و`Montserrat_Variable.woff2`).
-> **مش موجودين في فولدر الـ assets اللي استلمتوه.** خطوط التطبيق القديمة (Cairo وNeoSans وShamel وHelvetica) فضلت زي ما هي، شوف القسم 3.
+> **موجودين في فولدر الـ assets** (اتضافوا في 2026-11-26): `fonts/Kufam-VariableFont_wght.ttf` و`fonts/Montserrat-VariableFont_wght.ttf`. خطوط التطبيق القديمة (Cairo وNeoSans وShamel وHelvetica) فضلت زي ما هي، شوف القسم 3.
 
 ### اللوجو
 - المصدر الرسمي: [logo-ar.svg](https://jusuralmawared.com/brand/logo-ar.svg) من موقع العميل.
@@ -52,14 +52,14 @@
 
 فولدر **`assets.jusuralmawared`**: بديل مباشر لفولدر `assets` الحالي.
 
-- **204 ملف**، بنفس الأسماء ونفس المسارات ونفس الصيغ ونفس المقاسات. مفيش ملف اتضاف أو اتشال أو اتغير اسمه ([ADR 0008](../../decisions/0008-preserve-names-formats-dimensions.md)).
+- **206 ملف**: الـ 204 ملف الأصليين بنفس الأسماء ونفس المسارات ونفس الصيغ ونفس المقاسات، مفيش منهم ملف اتشال أو اتغير اسمه ([ADR 0008](../../decisions/0008-preserve-names-formats-dimensions.md)). وزيادة عليهم **ملفين خطوط جداد** في `fonts/` ([ADR 0017](../../decisions/0017-deliver-brand-fonts-in-assets.md)).
 - **75 ملف اتعدل** و**129 زي ما هم**. القائمة الكاملة بالأسماء في [changed-files.md](changed-files.md).
 
 | النوع | اتعدل | زي ما هو | اتعدل إيه |
 |---|---|---|---|
 | SVG | 61 | 102 | ألوان البراند القديم بقت ألوان جسور الموارد، و`images/auth/brand_logo.svg` بقى اللوجو الأبيض الجديد (vector) |
 | صور PNG/JPG | 14 | 14 | 7 رسومات اتغيرت ألوانها، و2 لوجو، و5 بانرات اتعاد تصميمها |
-| خطوط | 0 | 9 | — |
+| خطوط | 0 (+2 جداد) | 9 | اتضاف Kufam وMontserrat |
 | JSON وLottie | 0 | 4 | — |
 
 ### أهم الملفات
@@ -72,7 +72,7 @@
 
 ### إزاي تركّبوه
 1. استبدلوا محتوى فولدر `assets` بمحتوى `assets.jusuralmawared`.
-2. مفيش أي تعديل مطلوب في `pubspec.yaml`، لأن المسارات زي ما هي.
+2. مسارات الملفات القديمة زي ما هي، فمش محتاجين تعدلوا أي حاجة ليها في `pubspec.yaml`. المطلوب بس تسجيل الخطين الجداد (القسم 3).
 3. اعملوا `flutter clean` قبل الـ build، عشان الصور القديمة ما تفضلش في الكاش.
 
 ---
@@ -91,7 +91,15 @@
   | `#EDF3FD` خلفية فاتحة | `#EFEDFB` |
 
   أي ظل تاني من الألوان دي موجود في [project.json](../../../projects/jusur-almawared/project.json) (`svg.colorMap`).
-- [ ] **خطوط الهوية:** نزّلوا Kufam (عربي) وMontserrat (إنجليزي) من الروابط اللي في القسم 1، وضيفوهم في `pubspec.yaml` (`fonts:`)، وخلّوهم الخط الافتراضي في الثيم (`fontFamily`) مكان خطوط التطبيق القديم.
+- [ ] **خطوط الهوية:** ملفات الخطين موجودة في `assets/fonts/`. سجّلوهم في `pubspec.yaml` (`fonts:`)، مثلًا:
+  ```yaml
+  fonts:
+    - family: Kufam
+      fonts: [{ asset: assets/fonts/Kufam-VariableFont_wght.ttf }]
+    - family: Montserrat
+      fonts: [{ asset: assets/fonts/Montserrat-VariableFont_wght.ttf }]
+  ```
+  وخلّوا Kufam الخط الافتراضي في الثيم (`fontFamily`) مكان خطوط التطبيق القديم، وMontserrat للنص الإنجليزي.
 - [ ] **اسم التطبيق** في Android (`android:label`) وiOS (`CFBundleDisplayName`).
 - [ ] **أيقونة التطبيق (launcher icon) والـ native splash**: مش من ضمن التسليم ده.
 - [ ] **النصوص وملفات الترجمة** اللي فيها "عابر القارات" أو بيانات تواصل قديمة.
