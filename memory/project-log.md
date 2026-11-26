@@ -8,12 +8,12 @@
 | 2026-11-25 | jusur-almawared | تاني مشروع: جسور الموارد (أساسي `#4D3BD2` وثانوي غامق `#101A24`). بدأنا من الملفات الأصلية، واللوجو SVG أبيض بالكامل على الخلفيات الغامقة. 75 ملف من 204، والناتج في فولدر `assets.jusuralmawared`. الأدوات وصلت 1.1.0. |
 | 2026-11-26 | jusur-almawared | اتضاف [handoff.md](../docs/projects/jusur-almawared/handoff.md) لفريق التطوير: الهوية، والتسليم، والمطلوب في الكود. |
 | 2026-11-26 | jusur-almawared | ✅ رنا عادت البانرات الخمسة بخط **Kufam** (و"100%" بخط Montserrat)، وده بيقفل طلب التيم ليد. اتسلمت تاني في `assets.jusuralmawared.zip`. |
-
 | 2026-11-26 | jusur-almawared | بطلب رنا، خطين Kufam وMontserrat اتضافوا جوه `fonts/` في الـ assets (`addFiles`، [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md)). الناتج بقى 206 ملف، و`assets.jusuralmawared.zip` اتعمل من جديد. |
+| 2026-11-26 | الريبو | ✅ التيم ليد وافق على [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md) (الخطوط جوه الـ assets). وكل الحاجات المفتوحة اللي تحت بقت مسؤولية رنا، تقررها وتتابعها. |
 
 ## حاجات مفتوحة / متابعة
 
-- [ ] **❓ للتيم ليد:** [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md) (الخطوط جوه الـ assets) استثناء من ADR 0008، ورنا قررته. محتاج تأكيدك. لو مش موافق، نشيل `addFiles` ونبعت الخطوط في zip منفصل.
+> **المسؤول: رنا.** التيم ليد سابلها القرار والمتابعة في كل البنود دي (2026-11-26). أي بند محتاج موافقة على استثناء من قاعدة، يرجع للتيم ليد ([ADR 0015](../docs/decisions/0015-binding-rules-enforced.md)).
 
 - [ ] **jusur:** الدوائر الفاتحة ورا الرسومات بقت رمادي، بسبب الثانوي الغامق. لو صاحب الشغل عايزها بنفسجي فاتح، هنحتاج نضيف `tintColorMap` للأداة.
 
