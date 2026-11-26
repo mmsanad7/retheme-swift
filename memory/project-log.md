@@ -12,6 +12,7 @@
 | 2026-11-26 | الريبو | ✅ التيم ليد وافق على [ADR 0017](../docs/decisions/0017-deliver-brand-fonts-in-assets.md) (الخطوط جوه الـ assets). وكل الحاجات المفتوحة اللي تحت بقت مسؤولية رنا، تقررها وتتابعها. |
 | 2026-11-26 | المشروعين | رنا قفلت كل الحاجات المفتوحة. `edit_icon` و`location_icon` (`#1B61A0`) اتغيروا للأساسي في المشروعين (`svg.fileOverrides`، [ADR 0010](../docs/decisions/0010-non-brand-colors-unchanged.md))، فبقوا 77 ملف متعدل. `assets.jusuralmawared.zip` اتعمل من جديد. |
 | 2026-11-26 | الريبو | ترتيب فولدرات ثابت (`base-assets` و`clients` جنب الريبو، و`workspace.local.json` لكل جهاز)، و`New-Project.ps1` بيعمل أي عميل ويوثّقه، والتوثيق بقى إلزامي ([ADR 0018](../docs/decisions/0018-workspace-layout-and-project-scaffold.md)). excp خد `handoff.md`. **رنا:** متنقلش ملفاتك غير بعد دمج الـ PR. |
+| 2026-11-26 | الريبو | [client-intake.md](../docs/client-intake.md): أي قرار اتاخد مع عميل بقى سؤال للعميل اللي بعده (حجم اللوجو واتجاهه، الدارك مود، مجال العميل...)، وClaude بيسأله أول ما ييجي عميل جديد ([ADR 0019](../docs/decisions/0019-cumulative-client-intake.md)). |
 
 ## حاجات مفتوحة / متابعة
 

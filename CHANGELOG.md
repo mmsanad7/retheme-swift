@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### اتضاف ([ADR 0019](docs/decisions/0019-cumulative-client-intake.md))
+- [`docs/client-intake.md`](docs/client-intake.md): أسئلة استلام أي عميل جديد في 10 أقسام (الأساسيات، المجال، الألوان، اللوجو، الخطوط، الصور، البانرات، الدارك مود، حاجات بره الـ assets، التسليم)، وكل سؤال جنبه الإجابة الافتراضية ومصدرها. Claude بيسألها أول ما ييجي عميل (قاعدة 13 في `CLAUDE.md`)، وأي قرار جديد بيتضاف كسؤال.
+
 ### اتضاف ([ADR 0018](docs/decisions/0018-workspace-layout-and-project-scaffold.md))
 - **ترتيب فولدرات ثابت:** `workspace.local.json` في جذر الريبو (متجاهل في git) بيحدد الفولدر الرئيسي، و`{root}/...` في `sourceDir` و`outputDir`. الأصل في `base-assets\<baseApp>` والناتج في `clients\<name>`. خانة جديدة `baseApp`.
 - [`tools/New-Project.ps1`](tools/New-Project.ps1): بيعمل أي عميل جديد بأمر واحد (الإعدادات بالهوية والخطوط، و`brand\`، وفولدر العميل، والتقرير و`handoff.md` من [القوالب](docs/projects/_template/)، وسطر في السجل وفي جدول المشاريع).

@@ -73,6 +73,7 @@ retheme-swift/
 | الملف | المحتوى |
 |---|---|
 | [docs/getting-started.md](docs/getting-started.md) | التجهيز على جهاز جديد |
+| [docs/client-intake.md](docs/client-intake.md) | أسئلة استلام أي عميل جديد (تراكمية، بتكبر مع كل مشروع) |
 | [docs/workflow.md](docs/workflow.md) | خطوات أي مشروع retheme من الأول للآخر |
 | [docs/configuration.md](docs/configuration.md) | شرح كل خانة في `project.json` |
 | [docs/how-it-works.md](docs/how-it-works.md) | الخوارزميات من جوه |

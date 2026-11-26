@@ -38,6 +38,7 @@
 10. **أي اسم ملف أو عنصر في الرد يكون رابط** (markdown link)، مش اسم بس.
 11. **خطوط الهوية إلزامية:** ممنوع تبدأ مشروع من غير الخط العربي والإنجليزي (`brand.fonts` + ملف الخط في `brand/`)، وأي نص على الصور يتكتب بيهم ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)).
 12. **ترتيب الفولدرات ثابت:** الأصل في `{root}\base-assets\<baseApp>`، والناتج في `{root}\clients\<name>`، و`{root}` متحدد في `workspace.local.json` على كل جهاز. أي عميل جديد بيبدأ بـ `New-Project.ps1`، وأي مشروع لازم يكون ليه `README.md` و`handoff.md` وسطر في السجل ([ADR 0018](docs/decisions/0018-workspace-layout-and-project-scaffold.md)).
+13. **أول ما ييجي عميل جديد، اسأل أسئلة [docs/client-intake.md](docs/client-intake.md) كلها في رسالة واحدة**، وجنب كل سؤال الإجابة الافتراضية. ما تستناش المستخدم يفتكر هو، وما تبدأش من غير القسم "أ". وأي قرار جديد في أي مشروع ملهوش سؤال هناك، ضيفه كسؤال في نفس الـ commit ([ADR 0019](docs/decisions/0019-cumulative-client-intake.md)).
 
 ## طريقة التعامل مع المستخدم
 
