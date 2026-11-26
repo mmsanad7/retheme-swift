@@ -9,6 +9,7 @@
 | **مصدر اللوجو** | `https://jusuralmawared.com/brand/logo-ar.svg` (ملف SVG ألوانه أسود و`#101A24` وبنفسجي `#6553EA`) |
 | **الإعدادات** | [`projects/jusur-almawared/project.json`](../../../projects/jusur-almawared/project.json) |
 | **قائمة الملفات كاملة** | [changed-files.md](changed-files.md) |
+| **التسليم لفريق التطوير** | [handoff.md](handoff.md) |
 
 ## النتيجة بالأرقام
 

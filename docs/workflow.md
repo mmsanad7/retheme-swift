@@ -78,6 +78,7 @@ Copy-Item projects\_template projects\<name> -Recurse
 .\tools\Compare-Assets.ps1 -Project <name> -OutFile docs\projects\<name>\changed-files.md
 ```
 - كمّل `docs/projects/<name>/README.md`: الأرقام، القرارات، الحاجات المفتوحة.
+- اكتب `docs/projects/<name>/handoff.md` لفريق التطوير: الهوية، واستلموا إيه، والمطلوب منهم في الكود، والحاجات المتسابة عن قصد. مثال: [jusur-almawared/handoff.md](projects/jusur-almawared/handoff.md).
 - ضيف سطر في `memory/project-log.md` وفي جدول المشاريع في `README.md`.
 - لو خدت قرار جديد مهم، اكتب له ADR.
 - اعمل commit للـ config والقوالب والتوثيق (**من غير** ملفات العميل).

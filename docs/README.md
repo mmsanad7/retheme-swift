@@ -15,4 +15,4 @@
 - [decisions/](decisions/README.md): سجل القرارات المعمارية (ADRs).
 - [projects/](projects/): تقرير لكل مشروع اتعمل.
   - [excp-swift-demo](projects/excp-swift-demo/README.md): الحماية المتميزة
-  - [jusur-almawared](projects/jusur-almawared/README.md): جسور الموارد
+  - [jusur-almawared](projects/jusur-almawared/README.md): جسور الموارد ([التسليم لفريق التطوير](projects/jusur-almawared/handoff.md))

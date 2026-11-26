@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### اتضاف
+- [`docs/projects/jusur-almawared/handoff.md`](docs/projects/jusur-almawared/handoff.md): ملف تسليم لفريق التطوير، وخطوة الـ handoff اتضافت في [workflow.md](docs/workflow.md).
+- قواعد الفريق في [memory/user-preferences.md](memory/user-preferences.md): pull قبل أي تعديل وpush بعده، والروابط في الردود.
+
 ## [1.1.0] - 2026-11-25
 
 ### اتضاف
