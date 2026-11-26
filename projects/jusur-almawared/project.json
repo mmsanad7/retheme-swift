@@ -11,7 +11,11 @@
     "secondary": "#101A24",
     "logoColor": "brand/logo-color.png",
     "logoWhite": "brand/logo-white.png",
-    "logoSourceSvg": "https://jusuralmawared.com/brand/logo-ar.svg"
+    "logoSourceSvg": "https://jusuralmawared.com/brand/logo-ar.svg",
+    "fonts": {
+      "ar": { "family": "Kufam", "cssName": "fontAr", "source": "https://fonts.google.com/specimen/Kufam" },
+      "en": { "family": "Montserrat", "cssName": "fontEn", "source": "https://fonts.google.com/specimen/Montserrat" }
+    }
   },
 
   "svg": {

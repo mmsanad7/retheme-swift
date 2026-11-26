@@ -32,6 +32,15 @@
 | خلفيات فاتحة | `#EFEDFB` / `#DBD8F6` / `#CFCAF3` / `#C1BAEF` | الخلفيات الفاتحة اللي كانت لبني |
 | لون مميز على الغامق | `#A99DF2` بنفسجي فاتح | الكلام المميز على الخلفيات الغامقة (في البانرات) |
 
+### الخطوط
+| اللغة | الخط | اسمه في CSS موقع العميل | المصدر |
+|---|---|---|---|
+| **العربي** | **Kufam** (Variable) | `fontAr` | [Google Fonts: Kufam](https://fonts.google.com/specimen/Kufam) |
+| **الإنجليزي** | **Montserrat** (Variable) | `fontEn` | [Google Fonts: Montserrat](https://fonts.google.com/specimen/Montserrat) |
+
+> الخطين مجانيين (رخصة OFL)، ومأخوذين من CSS موقع [jusuralmawared.com](https://jusuralmawared.com) (`Kufam_Variable.woff2` و`Montserrat_Variable.woff2`).
+> **مش موجودين في فولدر الـ assets اللي استلمتوه.** خطوط التطبيق القديمة (Cairo وNeoSans وShamel وHelvetica) فضلت زي ما هي، شوف القسم 3.
+
 ### اللوجو
 - المصدر الرسمي: [logo-ar.svg](https://jusuralmawared.com/brand/logo-ar.svg) من موقع العميل.
 - على الخلفيات الغامقة: اللوجو **أبيض بالكامل** (حتى الجزء البنفسجي).
@@ -82,6 +91,7 @@
   | `#EDF3FD` خلفية فاتحة | `#EFEDFB` |
 
   أي ظل تاني من الألوان دي موجود في [project.json](../../../projects/jusur-almawared/project.json) (`svg.colorMap`).
+- [ ] **خطوط الهوية:** نزّلوا Kufam (عربي) وMontserrat (إنجليزي) من الروابط اللي في القسم 1، وضيفوهم في `pubspec.yaml` (`fonts:`)، وخلّوهم الخط الافتراضي في الثيم (`fontFamily`) مكان خطوط التطبيق القديم.
 - [ ] **اسم التطبيق** في Android (`android:label`) وiOS (`CFBundleDisplayName`).
 - [ ] **أيقونة التطبيق (launcher icon) والـ native splash**: مش من ضمن التسليم ده.
 - [ ] **النصوص وملفات الترجمة** اللي فيها "عابر القارات" أو بيانات تواصل قديمة.
@@ -99,6 +109,7 @@
 | لوجو مساند وأيقونات السوشيال (واتساب، تيك توك، X، إنستجرام، فيسبوك) | لوجوهات جهات تانية ما بتتغيرش ([ADR 0007](../../decisions/0007-third-party-logos-untouched.md)) |
 | الدوائر الفاتحة ورا الرسومات بقت رمادي فاتح | نتيجة طبيعية للثانوي الغامق ([ADR 0014](../../decisions/0014-dark-secondary-banner-accents.md)) |
 | جملة "منصة مساند الرسمية" في `slider1` | اتسابت بطلب من التيم ليد |
+| النص في البانرات مكتوب بخطوط التطبيق القديم (NeoSans وCairo)، مش Kufam | البانرات اتعملت قبل ما نوثّق خطوط الهوية، ومستنية قرار نعيدها بـ Kufam ولا لأ |
 
 ---
 

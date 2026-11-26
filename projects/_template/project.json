@@ -10,7 +10,11 @@
     "primary": "#000000",
     "secondary": "#000000",
     "logoColor": "brand/logo-color.png",
-    "logoWhite": "brand/logo-white.png"
+    "logoWhite": "brand/logo-white.png",
+    "fonts": {
+      "ar": { "family": "Arabic font name", "source": "https://..." },
+      "en": { "family": "English font name", "source": "https://..." }
+    }
   },
 
   "svg": {
