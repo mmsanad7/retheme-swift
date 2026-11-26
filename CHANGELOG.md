@@ -8,6 +8,9 @@
 - **خطوط الهوية إلزامية** ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)): `Invoke-Retheme` بيرفض أي مشروع من غير `brand.fonts`، و`Render-Banners` بيرفض أي خط بانر مش `brandFile`، والـ pre-commit وCI بيفحصوا `brand.fonts`. خانة `brandFile` جديدة في `banners.fonts`. `excp-swift-demo` معاه استثناء (`legacyNoBrandFonts`).
 - **jusur-almawared:** البانرات الخمسة اتعادت بخط Kufam (`brandFile`)، و"100%" بخط Montserrat (عيلة `En`). العناوين بوزن 800، والمسافة بين الكلمات `.14em` لأن Kufam ضيق.
 
+### اتغير
+- **المشروعين:** `icon/edit_icon.svg` و`icon/location_icon.svg` (`#1B61A0`) اتغيروا للون الأساسي عن طريق `svg.fileOverrides` ([ADR 0010](docs/decisions/0010-non-brand-colors-unchanged.md))، فبقوا 77 ملف متعدل. وكل الحاجات المفتوحة اتقفلت.
+
 ### اتضاف
 - خانة `addFiles` في `project.json`: بتضيف ملفات (زي خطوط الهوية) للناتج، ومش بتكتب فوق ملف موجود. `Compare-Assets` بيعدّها تحت بند "added on purpose" ([ADR 0017](docs/decisions/0017-deliver-brand-fonts-in-assets.md)). **jusur-almawared:** Kufam وMontserrat اتضافوا في `fonts/`.
 - خطوط هوية جسور الموارد (Kufam عربي وMontserrat إنجليزي) في [handoff.md](docs/projects/jusur-almawared/handoff.md) و[تقرير المشروع](docs/projects/jusur-almawared/README.md) و`project.json`، وخانة `brand.fonts` في [configuration.md](docs/configuration.md)، وخطوة الخطوط في [workflow.md](docs/workflow.md).

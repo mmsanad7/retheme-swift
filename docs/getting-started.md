@@ -48,7 +48,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 .\tools\Compare-Assets.ps1 -Project excp-swift-demo
 ```
 
-المفروض الخطوة الأخيرة تطبع: `Total 204 | changed 75 | unchanged 129 | missing 0 | extra 0`
+المفروض الخطوة الأخيرة تطبع: `Total 204 | changed 77 | unchanged 127 | missing 0 | extra 0`
 
 ## 5. لو بتستخدم Claude Code
 

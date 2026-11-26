@@ -5,17 +5,17 @@
 | | Count |
 |---|---|
 | Total files (source) | 204 |
-| Changed | 75 |
-| Unchanged | 129 |
+| Changed | 77 |
+| Unchanged | 127 |
 | Missing in output | 0 |
 | Extra in output | 0 |
 | Added on purpose (addFiles) | 2 |
-| SVG : changed / unchanged | 61 / 102 |
+| SVG : changed / unchanged | 63 / 100 |
 | Raster : changed / unchanged | 14 / 14 |
 | Font : changed / unchanged | 0 / 9 |
 | Other : changed / unchanged | 0 / 4 |
 
-## Changed (75)
+## Changed (77)
 
 - `icon/branch_icon.svg`
 - `icon/calendar.svg`
@@ -25,9 +25,11 @@
 - `icon/choose_worker_from_app.svg`
 - `icon/contract_success.svg`
 - `icon/default_package_icon.svg`
+- `icon/edit_icon.svg`
 - `icon/empty_icon.png`
 - `icon/info.svg`
 - `icon/item.svg`
+- `icon/location_icon.svg`
 - `icon/trash.svg`
 - `icon/worker_cv.svg`
 - `icon/worker_discription.svg`
@@ -98,7 +100,7 @@
 - `fonts/Kufam-VariableFont_wght.ttf`
 - `fonts/Montserrat-VariableFont_wght.ttf`
 
-## Unchanged (129)
+## Unchanged (127)
 
 - `config/contract_card_config.json`
 - `config/hourly_service_example.json`
@@ -119,7 +121,6 @@
 - `icon/attachments.svg`
 - `icon/bag.svg`
 - `icon/doxs.svg`
-- `icon/edit_icon.svg`
 - `icon/english_cash.svg`
 - `icon/english_dark_cash.svg`
 - `icon/filter.svg`
@@ -127,7 +128,6 @@
 - `icon/gift.svg`
 - `icon/home_icon.svg`
 - `icon/ic_fingerprint.svg`
-- `icon/location_icon.svg`
 - `icon/location_pin.svg`
 - `icon/location_prompt_gps_icon.svg`
 - `icon/location_prompt_map_icon.svg`

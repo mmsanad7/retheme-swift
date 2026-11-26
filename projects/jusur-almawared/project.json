@@ -41,7 +41,9 @@
       "#A2C1DA": "#C1BAEF"
     },
     "fileOverrides": {
-      "icon/choose_worker_branch.svg": { "#F9ED34": "#A69DE9", "#FBAF40": "#4D3BD2" }
+      "icon/choose_worker_branch.svg": { "#F9ED34": "#A69DE9", "#FBAF40": "#4D3BD2" },
+      "icon/edit_icon.svg":     { "#1B61A0": "#4D3BD2" },
+      "icon/location_icon.svg": { "#1B61A0": "#4D3BD2" }
     },
     "skip": ["images/auth/brand_logo.svg"]
   },
