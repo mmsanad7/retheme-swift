@@ -16,6 +16,7 @@
 ## الأوامر
 
 ```powershell
+.\tools\New-Project.ps1 -Name <name> -NameAr .. -NameEn .. -Primary .. -Secondary .. -FontAr .. -FontArSource .. -FontEn .. -FontEnSource ..   # عميل جديد + توثيقه
 .\tools\Convert-SvgLogo.ps1 -Svg brand\logo.svg -Out brand\logo-white.png -White   # لوجو SVG
 .\tools\Get-ColorReport.ps1 -Project <name> -OldBrand <hex,hex>   # تحليل
 .\tools\Invoke-Retheme.ps1  -Project <name> -Force                # بناء
@@ -36,6 +37,8 @@
 9. **`git pull` قبل أي تعديل، و`git push` بعده.** الريبو مشترك بين التيم ليد ورنا. الـ hooks في `.claude/settings.json` بتفرض ده ([ADR 0015](docs/decisions/0015-binding-rules-enforced.md)). لو الـ Stop hook وقفك، اعمل commit وpush أو قول للمستخدم ليه لازم يستنى.
 10. **أي اسم ملف أو عنصر في الرد يكون رابط** (markdown link)، مش اسم بس.
 11. **خطوط الهوية إلزامية:** ممنوع تبدأ مشروع من غير الخط العربي والإنجليزي (`brand.fonts` + ملف الخط في `brand/`)، وأي نص على الصور يتكتب بيهم ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)).
+12. **ترتيب الفولدرات ثابت:** الأصل في `{root}\base-assets\<baseApp>`، والناتج في `{root}\clients\<name>`، و`{root}` متحدد في `workspace.local.json` على كل جهاز. أي عميل جديد بيبدأ بـ `New-Project.ps1`، وأي مشروع لازم يكون ليه `README.md` و`handoff.md` وسطر في السجل ([ADR 0018](docs/decisions/0018-workspace-layout-and-project-scaffold.md)).
+13. **أول ما ييجي عميل جديد، اسأل أسئلة [docs/client-intake.md](docs/client-intake.md) كلها في رسالة واحدة**، وجنب كل سؤال الإجابة الافتراضية. ما تستناش المستخدم يفتكر هو، وما تبدأش من غير القسم "أ". وأي قرار جديد في أي مشروع ملهوش سؤال هناك، ضيفه كسؤال في نفس الـ commit ([ADR 0019](docs/decisions/0019-cumulative-client-intake.md)).
 
 ## طريقة التعامل مع المستخدم
 

@@ -4,6 +4,7 @@ projects/*/input/
 projects/*/output/
 projects/*/.work/
 projects/*/project.local.json
+workspace.local.json
 
 # any client image/font/archive that slips into projects/
 projects/**/*.png

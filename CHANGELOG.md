@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+### اتضاف ([ADR 0019](docs/decisions/0019-cumulative-client-intake.md))
+- [`docs/client-intake.md`](docs/client-intake.md): أسئلة استلام أي عميل جديد في 10 أقسام (الأساسيات، المجال، الألوان، اللوجو، الخطوط، الصور، البانرات، الدارك مود، حاجات بره الـ assets، التسليم)، وكل سؤال جنبه الإجابة الافتراضية ومصدرها. Claude بيسألها أول ما ييجي عميل (قاعدة 13 في `CLAUDE.md`)، وأي قرار جديد بيتضاف كسؤال.
+
+### اتضاف ([ADR 0018](docs/decisions/0018-workspace-layout-and-project-scaffold.md))
+- **ترتيب فولدرات ثابت:** `workspace.local.json` في جذر الريبو (متجاهل في git) بيحدد الفولدر الرئيسي، و`{root}/...` في `sourceDir` و`outputDir`. الأصل في `base-assets\<baseApp>` والناتج في `clients\<name>`. خانة جديدة `baseApp`.
+- [`tools/New-Project.ps1`](tools/New-Project.ps1): بيعمل أي عميل جديد بأمر واحد (الإعدادات بالهوية والخطوط، و`brand\`، وفولدر العميل، والتقرير و`handoff.md` من [القوالب](docs/projects/_template/)، وسطر في السجل وفي جدول المشاريع).
+- `Test-RepoRules.ps1` بيرفض أي مشروع ناقصه `README.md` أو `handoff.md` أو سطر في السجل، وبيرفض رفع `workspace.local.json`.
+- [`docs/projects/excp-swift-demo/handoff.md`](docs/projects/excp-swift-demo/handoff.md).
+
+### اتغير
+- المشروعين القدام اتنقلوا لمسارات `{root}`. أي جهاز شغال بـ `project.local.json` هيفضل شغال لحد ما ينقل ملفاته ([getting-started.md](docs/getting-started.md)).
+
 ### اتغير (ممكن يكسر مشاريع قديمة)
 - **خطوط الهوية إلزامية** ([ADR 0016](docs/decisions/0016-brand-fonts-mandatory.md)): `Invoke-Retheme` بيرفض أي مشروع من غير `brand.fonts`، و`Render-Banners` بيرفض أي خط بانر مش `brandFile`، والـ pre-commit وCI بيفحصوا `brand.fonts`. خانة `brandFile` جديدة في `banners.fonts`. `excp-swift-demo` معاه استثناء (`legacyNoBrandFonts`).
 - **jusur-almawared:** البانرات الخمسة اتعادت بخط Kufam (`brandFile`)، و"100%" بخط Montserrat (عيلة `En`). العناوين بوزن 800، والمسافة بين الكلمات `.14em` لأن Kufam ضيق.

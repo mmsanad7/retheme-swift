@@ -22,3 +22,5 @@
 | [0015](0015-binding-rules-enforced.md) | القواعد والقرارات ملزمة لأي حد على الريبو، وبتتطبق أوتوماتيك (Claude Code + git hooks + CI) | مقبول |
 | [0016](0016-brand-fonts-mandatory.md) | خطوط الهوية إلزامية في أي مشروع، والبانرات بتتكتب بيها | مقبول |
 | [0017](0017-deliver-brand-fonts-in-assets.md) | خطوط الهوية بتتسلم جوه فولدر الـ assets (`addFiles`)، وده استثناء من 0008 | مقبول (وافق عليه التيم ليد) |
+| [0018](0018-workspace-layout-and-project-scaffold.md) | ترتيب فولدرات ثابت (`workspace.local.json` + `{root}`)، و`New-Project.ps1` بيعمل أي عميل ويوثّقه، والتوثيق إلزامي | مقبول (وافق عليه التيم ليد) |
+| [0019](0019-cumulative-client-intake.md) | أي قرار اتاخد مع عميل بيبقى سؤال للعميل اللي بعده ([client-intake.md](../client-intake.md))، وClaude بيسأله أول ما ييجي عميل جديد | مقبول (طلب التيم ليد) |

@@ -15,7 +15,7 @@ try {
     $errors = New-Object System.Collections.Generic.List[string]
 
     # Rule: client files never go to git (ADR 0001). _template is ours, not a client's.
-    $clientPattern = '^projects/[^/]+/(brand|input|output|\.work)/|^projects/[^/]+/project\.local\.json$|^projects/.+\.(png|jpe?g|webp|gif|svg|ttf|otf|zip|rar)$'
+    $clientPattern = '^projects/[^/]+/(brand|input|output|\.work)/|^projects/[^/]+/project\.local\.json$|^workspace\.local\.json$|^projects/.+\.(png|jpe?g|webp|gif|svg|ttf|otf|zip|rar)$'
     foreach ($f in $files) {
         if ($f -match $clientPattern) { $errors.Add("client file must not be committed: $f (ADR 0001)") }
     }
@@ -34,10 +34,20 @@ try {
 
     # Rule: every project declares its brand fonts (ADR 0016). Using them in banners is enforced by Render-Banners.ps1.
     . (Join-Path $PSScriptRoot '_common.ps1')
+    # Rule: every project is documented - README + handoff + a project-log row (ADR 0018).
+    $log = [IO.File]::ReadAllText((Join-Path $repo 'memory\project-log.md'), [Text.Encoding]::UTF8)
     foreach ($pj in Get-ChildItem (Join-Path $repo 'projects') -Directory | Where-Object { $_.Name -ne '_template' }) {
         if (-not (Test-Path (Join-Path $pj.FullName 'project.json'))) { continue }
         $cfg = Read-Utf8Json (Join-Path $pj.FullName 'project.json')
         foreach ($p in @(Get-BrandFontProblems $cfg)) { $errors.Add("projects/$($pj.Name): $p (ADR 0016)") }
+        foreach ($doc in 'README.md', 'handoff.md') {
+            if (-not (Test-Path (Join-Path $repo "docs\projects\$($pj.Name)\$doc"))) {
+                $errors.Add("projects/$($pj.Name): docs/projects/$($pj.Name)/$doc is missing (ADR 0018, tools/New-Project.ps1)")
+            }
+        }
+        if ($log -notmatch ('\|\s*' + [regex]::Escape($pj.Name) + '\s*\|')) {
+            $errors.Add("projects/$($pj.Name): no row in memory/project-log.md (ADR 0018)")
+        }
     }
 
     if ($errors.Count) {

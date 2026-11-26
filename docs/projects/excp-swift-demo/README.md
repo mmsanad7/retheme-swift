@@ -8,6 +8,7 @@
 | **اسم فولدر الناتج** | `excp swift demo assets` |
 | **الإعدادات** | [`projects/excp-swift-demo/project.json`](../../../projects/excp-swift-demo/project.json) |
 | **قائمة الملفات كاملة** | [changed-files.md](changed-files.md) (اتولّدت من الأداة) |
+| **التسليم لفريق التطوير** | [handoff.md](handoff.md) |
 
 ## النتيجة بالأرقام
 
@@ -81,7 +82,7 @@
 ## تشغيل المشروع من الأول
 ```powershell
 # على جهاز جديد: حط logo-color.png وlogo-white.png في projects\excp-swift-demo\brand\
-# واعمل project.local.json فيه sourceDir وoutputDir
+# والأصل في base-assets\aber-alqarat، والناتج بيطلع في clients\excp-swift-demo (ADR 0018)
 .\tools\Invoke-Retheme.ps1 -Project excp-swift-demo -Force
 .\tools\Render-Banners.ps1 -Project excp-swift-demo
 .\tools\Compare-Assets.ps1 -Project excp-swift-demo

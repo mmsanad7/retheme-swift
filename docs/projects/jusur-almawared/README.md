@@ -73,7 +73,7 @@ cd projects\jusur-almawared
 ..\..\tools\Convert-SvgLogo.ps1 -Svg brand\logo-ar.svg -Out brand\logo-color.png
 ..\..\tools\Convert-SvgLogo.ps1 -Svg brand\logo-ar.svg -Out brand\logo-white.png -White -WhiteSvgOut brand\logo-white.svg
 cd ..\..
-# اعمل project.local.json فيه sourceDir وoutputDir، وبعدين:
+# الأصل في base-assets\aber-alqarat، والناتج بيطلع في clients\jusur-almawared (ADR 0018)، وبعدين:
 .\tools\Invoke-Retheme.ps1 -Project jusur-almawared -Force
 .\tools\Render-Banners.ps1 -Project jusur-almawared
 .\tools\Compare-Assets.ps1 -Project jusur-almawared

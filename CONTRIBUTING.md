@@ -12,9 +12,9 @@
 
 ## إضافة مشروع (عميل) جديد
 1. اعمل branch جديد: `git checkout -b project/<name>`
-2. `Copy-Item projects\_template projects\<name> -Recurse`
-3. امشي على [docs/workflow.md](docs/workflow.md) خطوة بخطوة.
-4. اعمل commit لـ: `project.json`، و`banners/*.html`، و`docs/projects/<name>/`، وتحديث `memory/project-log.md` وجدول المشاريع في `README.md`.
+2. `.\tools\New-Project.ps1 -Name <name> ...` ([ADR 0018](docs/decisions/0018-workspace-layout-and-project-scaffold.md)): بيعمل الإعدادات والتوثيق والسطور في السجل والـ README.
+3. امشي على [docs/workflow.md](docs/workflow.md) خطوة بخطوة، وكمّل التوثيق وانت ماشي.
+4. اعمل commit لـ: `project.json`، و`banners/*.html`، و`docs/projects/<name>/`، و`memory/project-log.md`، و`README.md`. الـ pre-commit بيرفض أي مشروع ناقصه `README.md` أو `handoff.md` أو سطر في السجل.
 5. افتح Pull Request بالقالب.
 
 > ⚠️ **ممنوع** ترفع صور العميل أو خطوطه أو لوجوهاته. `.gitignore` بيمنع أغلبها، بس راجع `git status` قبل أي commit.

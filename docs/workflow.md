@@ -5,17 +5,19 @@
 ```
 
 ## 0. الاستلام
-اجمع من العميل:
+اسأل القسم "أ" من [client-intake.md](client-intake.md). باختصار، اجمع من العميل:
 - فولدر الـ assets الأصلي.
 - اللوجو الجديد **بأعلى دقة متاحة** (SVG أحسن حاجة، وإلا PNG بخلفية شفافة عرضه 1000 بكسل أو أكتر)، ونسخة بيضا للخلفيات الغامقة.
 - اللون الأساسي والثانوي (hex).
 - **خطوط الهوية (إلزامي، [ADR 0016](decisions/0016-brand-fonts-mandatory.md)):** اسم الخط العربي والإنجليزي، ورابط تنزيلهم، **وملف الخط نفسه**. لو العميل عنده موقع، دوّر على `@font-face` في الـ CSS بتاعه. سجّلهم في `brand.fonts`، وحط ملف الخط في `brand/`. **ممنوع تبدأ من غيرهم**، والأدوات هترفض تشتغل.
 - اسم الشركة بالعربي والإنجليزي **مكتوب بالظبط زي ما هيظهر**.
 
-اعمل المشروع:
+اعمل المشروع بأمر واحد ([ADR 0018](decisions/0018-workspace-layout-and-project-scaffold.md)). الأمر ده بيعمل `project.json` بالهوية والخطوط، وفولدر `brand\`، وفولدر العميل في `clients\`، و`docs/projects/<name>/README.md` و`handoff.md`، وسطر في [project-log](../memory/project-log.md) وفي جدول المشاريع:
 ```powershell
-Copy-Item projects\_template projects\<name> -Recurse
+.\tools\New-Project.ps1 -Name <name> -NameAr "<الاسم بالعربي>" -NameEn "<Name>" -Primary "#xxxxxx" -Secondary "#xxxxxx" `
+    -FontAr <خط عربي> -FontArSource <رابط> -FontEn <خط إنجليزي> -FontEnSource <رابط>
 ```
+الأصل الافتراضي `-BaseApp aber-alqarat`، والناتج بيطلع في `clients\<name>\` على طول. اسم التسليم الافتراضي (اسم الـ zip) `assets.<name>`، و`-OutputName` لو عايز اسم تاني. بعد كده حط اللوجو وملفات الخطوط في `projects\<name>\brand\`، وكمّل خانات التوثيق اللي فيها `—` وانت ماشي في الخطوات.
 
 لو اللوجو SVG، اعمل منه ملفات PNG ونسخة بيضا ([ADR 0013](decisions/0013-svg-logos-stay-vector.md)):
 ```powershell
@@ -36,14 +38,10 @@ Copy-Item projects\_template projects\<name> -Recurse
 - **بص بعينك** على كل صورة فيها عدد بكسلات كبير قبل ما تقرر.
 
 ## 2. قرارات مع العميل (قبل أي تنفيذ)
-اعرض عليه، والأحسن في رسالة واحدة:
-1. توزيع الألوان: القديم الغامق يبقى الأساسي الجديد، والقديم الفاتح يبقى الثانوي الجديد.
-2. أي لون مستخدم كتير بس مش من اللوجو القديم (زي الأحمر): القاعدة إنه يتساب.
-3. الصور: إيه اللي هيتعدل لونه وإيه اللي هيتساب.
-4. البانرات اللي فيها اسم أو لوجو قديم: هتتعاد تصميمها.
-5. لو اللوجو اللي مبعوت دقته ضعيفة، اطلب نسخة أحسن.
+الأسئلة كلها في **[client-intake.md](client-intake.md)** ([ADR 0019](decisions/0019-cumulative-client-intake.md)). القسم "أ" بيتسأل في الخطوة 0 قبل أي حاجة، وباقي الأقسام بتتسأل هنا بعد التحليل في رسالة واحدة، وجنب كل سؤال الإجابة الافتراضية. التحليل بيخلّي الأسئلة أدق، زي "فيه 163 مكان بالأحمر، يتساب؟".
 
-سجّل الإجابات في `docs/projects/<name>/README.md`.
+- سجّل الإجابات في جدول القرارات في `docs/projects/<name>/README.md` بأرقام الأسئلة.
+- أي قرار جديد ملهوش سؤال في القائمة، ضيفه هناك كسؤال.
 
 ## 3. الـ config
 املأ `projects/<name>/project.json`، والشرح الكامل في [configuration.md](configuration.md).
@@ -78,8 +76,8 @@ Copy-Item projects\_template projects\<name> -Recurse
 ```powershell
 .\tools\Compare-Assets.ps1 -Project <name> -OutFile docs\projects\<name>\changed-files.md
 ```
-- كمّل `docs/projects/<name>/README.md`: الأرقام، القرارات، الحاجات المفتوحة.
-- اكتب `docs/projects/<name>/handoff.md` لفريق التطوير: الهوية (الاسم والألوان **والخطوط** واللوجو)، واستلموا إيه، والمطلوب منهم في الكود، والحاجات المتسابة عن قصد. مثال: [jusur-almawared/handoff.md](projects/jusur-almawared/handoff.md).
+- كمّل `docs/projects/<name>/README.md`: الأرقام، القرارات، الحاجات المفتوحة. وشيل سطر "قيد التنفيذ".
+- كمّل `docs/projects/<name>/handoff.md` لفريق التطوير: الهوية (الاسم والألوان **والخطوط** واللوجو)، واستلموا إيه، والمطلوب منهم في الكود، والحاجات المتسابة عن قصد. مثال: [jusur-almawared/handoff.md](projects/jusur-almawared/handoff.md).
 - ضيف سطر في `memory/project-log.md` وفي جدول المشاريع في `README.md`.
 - لو خدت قرار جديد مهم، اكتب له ADR.
 - اعمل commit للـ config والقوالب والتوثيق (**من غير** ملفات العميل).

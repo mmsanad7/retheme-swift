@@ -27,15 +27,31 @@ function Write-Utf8([string]$Path, [string]$Text) {
     [IO.File]::WriteAllText($Path, $Text, $script:Utf8NoBom)
 }
 
-# Resolve a path from the config: absolute paths stay, relative ones are relative to the project folder.
+# Per-machine workspace root (docs/decisions/0018-workspace-layout-and-project-scaffold.md):
+# workspace.local.json at the repo root (git-ignored) = { "root": "D:/retheme-swift-project" }.
+function Get-WorkspaceRoot {
+    $f = Join-Path $script:RepoRoot 'workspace.local.json'
+    if (-not (Test-Path $f)) {
+        throw ("workspace.local.json is missing. Create it at the repo root with: " +
+               '{ "root": "D:/retheme-swift-project" }  (the folder that holds retheme-swift, base-assets and clients; see docs/getting-started.md)')
+    }
+    $root = (Read-Utf8Json $f).root
+    if ([string]::IsNullOrWhiteSpace($root)) { throw "workspace.local.json has no 'root'" }
+    return [IO.Path]::GetFullPath(($root -replace '/', '\'))
+}
+
+# Resolve a path from the config: {root}/ = workspace root, absolute paths stay,
+# relative ones are relative to the project folder.
 function Resolve-ProjectPath([string]$ProjectDir, [string]$Path) {
     if ([string]::IsNullOrWhiteSpace($Path)) { return $null }
+    if ($Path -like '{root}*') { $Path = (Get-WorkspaceRoot) + $Path.Substring(6) }
     $p = $Path -replace '/', '\'
     if ([IO.Path]::IsPathRooted($p)) { return $p }
     return [IO.Path]::GetFullPath((Join-Path $ProjectDir $p))
 }
 
 # Loads projects/<name>/project.json and shallow-merges project.local.json (git-ignored, per machine).
+# project.local.json wins over the {root} paths in project.json.
 function Get-RethemeConfig([string]$Project) {
     $dir = if (Test-Path $Project -PathType Container) { (Resolve-Path $Project).Path }
            else { Join-Path $script:RepoRoot "projects\$Project" }
