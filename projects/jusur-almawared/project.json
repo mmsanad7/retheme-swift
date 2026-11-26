@@ -81,8 +81,9 @@
     "pillBackground": "#4D3BD2",
     "pillText": "#FFFFFF",
     "fonts": {
-      "Neo":   { "file": "fonts/alfont_com_NeoSansW23-Bold.ttf" },
-      "Cairo": { "file": "fonts/Cairo-VariableFont_slntwght.ttf", "weight": "200 1000" }
+      "Neo":   { "brandFile": "brand/Kufam.ttf", "weight": "400 900" },
+      "Cairo": { "brandFile": "brand/Kufam.ttf", "weight": "400 900" },
+      "En":    { "brandFile": "brand/Montserrat.ttf", "weight": "100 900" }
     },
     "items": [
       { "file": "images/slider1.png", "width": 1050, "height": 690, "template": "banners/slider1.html",
