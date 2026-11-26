@@ -12,10 +12,12 @@
 - **خطوط الهوية (إلزامي، [ADR 0016](decisions/0016-brand-fonts-mandatory.md)):** اسم الخط العربي والإنجليزي، ورابط تنزيلهم، **وملف الخط نفسه**. لو العميل عنده موقع، دوّر على `@font-face` في الـ CSS بتاعه. سجّلهم في `brand.fonts`، وحط ملف الخط في `brand/`. **ممنوع تبدأ من غيرهم**، والأدوات هترفض تشتغل.
 - اسم الشركة بالعربي والإنجليزي **مكتوب بالظبط زي ما هيظهر**.
 
-اعمل المشروع:
+اعمل المشروع بأمر واحد ([ADR 0018](decisions/0018-workspace-layout-and-project-scaffold.md)). الأمر ده بيعمل `project.json` بالهوية والخطوط، وفولدر `brand\`، وفولدر العميل في `clients\`، و`docs/projects/<name>/README.md` و`handoff.md`، وسطر في [project-log](../memory/project-log.md) وفي جدول المشاريع:
 ```powershell
-Copy-Item projects\_template projects\<name> -Recurse
+.\tools\New-Project.ps1 -Name <name> -NameAr "<الاسم بالعربي>" -NameEn "<Name>" -Primary "#xxxxxx" -Secondary "#xxxxxx" `
+    -FontAr <خط عربي> -FontArSource <رابط> -FontEn <خط إنجليزي> -FontEnSource <رابط>
 ```
+الأصل الافتراضي `-BaseApp aber-alqarat`، واسم فولدر الناتج الافتراضي `assets.<name>` (`-OutputName` لو عايز اسم تاني). بعد كده حط اللوجو وملفات الخطوط في `projects\<name>\brand\`، وكمّل خانات التوثيق اللي فيها `—` وانت ماشي في الخطوات.
 
 لو اللوجو SVG، اعمل منه ملفات PNG ونسخة بيضا ([ADR 0013](decisions/0013-svg-logos-stay-vector.md)):
 ```powershell
@@ -78,8 +80,8 @@ Copy-Item projects\_template projects\<name> -Recurse
 ```powershell
 .\tools\Compare-Assets.ps1 -Project <name> -OutFile docs\projects\<name>\changed-files.md
 ```
-- كمّل `docs/projects/<name>/README.md`: الأرقام، القرارات، الحاجات المفتوحة.
-- اكتب `docs/projects/<name>/handoff.md` لفريق التطوير: الهوية (الاسم والألوان **والخطوط** واللوجو)، واستلموا إيه، والمطلوب منهم في الكود، والحاجات المتسابة عن قصد. مثال: [jusur-almawared/handoff.md](projects/jusur-almawared/handoff.md).
+- كمّل `docs/projects/<name>/README.md`: الأرقام، القرارات، الحاجات المفتوحة. وشيل سطر "قيد التنفيذ".
+- كمّل `docs/projects/<name>/handoff.md` لفريق التطوير: الهوية (الاسم والألوان **والخطوط** واللوجو)، واستلموا إيه، والمطلوب منهم في الكود، والحاجات المتسابة عن قصد. مثال: [jusur-almawared/handoff.md](projects/jusur-almawared/handoff.md).
 - ضيف سطر في `memory/project-log.md` وفي جدول المشاريع في `README.md`.
 - لو خدت قرار جديد مهم، اكتب له ADR.
 - اعمل commit للـ config والقوالب والتوثيق (**من غير** ملفات العميل).

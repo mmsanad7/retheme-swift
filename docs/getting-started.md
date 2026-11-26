@@ -21,24 +21,34 @@ cd retheme-swift
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
-## 3. حط ملفات المشروع على جهازك
+## 3. رتّب فولدرات الشغل ([ADR 0018](decisions/0018-workspace-layout-and-project-scaffold.md))
 
-ملفات العملاء مش على GitHub (شوف [ADR 0001](decisions/0001-tools-and-docs-only.md))، فلازم تجيبها بنفسك:
+كل الشغل في فولدر واحد، والريبو جواه. الـ assets والناتج **جنب** الريبو مش جواه، فـ git مش بيشوفهم:
 
-1. **اللوجوهات** → `projects/<name>/brand/`
-   - `logo-color.png`: اللوجو الملون بخلفية شفافة.
-   - `logo-white.png`: نسخة للخلفيات الغامقة.
-2. **الـ assets الأصلية**: سيبها في أي مكان على جهازك.
-3. اعمل ملف **`projects/<name>/project.local.json`**. الملف ده متجاهل في git، وفيه المسارات اللي على جهازك:
-
-```json
-{
-  "sourceDir": "D:/clients/excp/assets",
-  "outputDir": "D:/clients/excp/excp swift demo assets"
-}
+```
+D:\retheme-swift-project\
+├── retheme-swift\                 ← الريبو
+├── base-assets\aber-alqarat\      ← الـ assets الأصلية (مش بتتعدل)
+└── clients\<name>\                ← ناتج كل عميل
 ```
 
-لو ما عملتش الملف ده، المسارات الافتراضية هي `projects/<name>/input` و`projects/<name>/output`، والاتنين متجاهلين في git.
+1. اعمل ملف **`workspace.local.json`** في جذر الريبو (متجاهل في git)، وفيه الفولدر الرئيسي على جهازك:
+   ```json
+   { "root": "D:/retheme-swift-project" }
+   ```
+2. **الـ assets الأصلية** (من رنا أو من فريق التطوير) → `base-assets\aber-alqarat\`.
+3. **ملفات الهوية** لكل عميل (اللوجو والخطوط) → `projects/<name>/brand/` (متجاهل في git، فلازم تجيبها بنفسك، [ADR 0001](decisions/0001-tools-and-docs-only.md)).
+   - `logo-color.png`: اللوجو الملون بخلفية شفافة.
+   - `logo-white.png`: نسخة للخلفيات الغامقة.
+
+المسارات في `project.json` مكتوبة بـ `{root}/...`، فالأدوات بتلاقي كل حاجة لوحدها. لو جهاز معين محتاج مسار مختلف لمشروع، اعمل `projects/<name>/project.local.json` فيه `sourceDir` أو `outputDir`، وده ليه الأولوية.
+
+### نقل جهاز عليه مشاريع قديمة (مرة واحدة)
+لو كنت شغال قبل الترتيب ده بـ `project.local.json`:
+1. انقل الـ assets الأصلية لـ `base-assets\aber-alqarat\`.
+2. انقل ناتج كل مشروع لـ `clients\<name>\` بنفس اسم فولدره (`clients\jusur-almawared\assets.jusuralmawared` و`clients\excp-swift-demo\excp swift demo assets`).
+3. اعمل `workspace.local.json`، وامسح `project.local.json` القديم من كل مشروع.
+4. اتأكد: `.\tools\Compare-Assets.ps1 -Project jusur-almawared` لازم يطلع `missing 0 | extra 0`.
 
 ## 4. جرّب
 

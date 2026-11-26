@@ -12,10 +12,13 @@
 ## البداية السريعة
 
 ```powershell
-# 1) انسخ قالب مشروع جديد
-Copy-Item projects\_template projects\my-client -Recurse
+# 0) مرة واحدة على كل جهاز: workspace.local.json فيه { "root": "D:/retheme-swift-project" }
+#    والـ assets الأصلية في D:\retheme-swift-project\base-assets\aber-alqarat\  (ADR 0018)
+# 1) اعمل العميل وتوثيقه بأمر واحد
+.\tools\New-Project.ps1 -Name my-client -NameAr "..." -NameEn "My Client" -Primary "#123456" -Secondary "#ABCDEF" `
+    -FontAr Kufam -FontArSource https://... -FontEn Montserrat -FontEnSource https://...
 
-# 2) حط اللوجوهات في projects\my-client\brand\  واعمل project.local.json فيه مسارات الـ assets على جهازك
+# 2) حط اللوجوهات وملفات الخطوط في projects\my-client\brand\
 # 3) حلّل الألوان
 .\tools\Get-ColorReport.ps1 -Project my-client -OldBrand 224182,1BAAE2
 
@@ -49,6 +52,7 @@ retheme-swift/
 ├── tools/                    ← الأدوات (PowerShell + C#)
 │   ├── Recolor.cs            ← معالجة الصور (بيتعمله compile وقت التشغيل)
 │   ├── _common.ps1           ← دوال مشتركة
+│   ├── New-Project.ps1       ← البداية: عميل جديد (الإعدادات + الفولدرات + التوثيق)
 │   ├── Convert-SvgLogo.ps1   ← الخطوة 0: لوجو SVG ← PNG شفاف ونسخة بيضا
 │   ├── Get-ColorReport.ps1   ← الخطوة 1: تحليل الألوان
 │   ├── Invoke-Retheme.ps1    ← الخطوة 2: نسخ + ألوان SVG + صور + لوجوهات

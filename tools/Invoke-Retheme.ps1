@@ -25,7 +25,7 @@ Import-Recolor
 $cfg = Get-RethemeConfig $Project
 Assert-BrandFonts $cfg
 $src = $cfg._source; $dst = $cfg._output
-if (-not (Test-Path $src)) { throw "sourceDir not found: $src (set it in project.local.json)" }
+if (-not (Test-Path $src)) { throw "sourceDir not found: $src (copy the base app assets there, or override it in project.local.json)" }
 if ($src.TrimEnd('\') -ieq $dst.TrimEnd('\')) { throw 'outputDir must differ from sourceDir' }
 New-Item -ItemType Directory -Force $cfg._work | Out-Null
 

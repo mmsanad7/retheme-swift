@@ -1,0 +1,4 @@
+{
+  "readmeRow": "| `{{NAME}}` | {{NAME_AR}} ({{NAME_EN}}) | {{DATE}} | [التقرير](docs/projects/{{NAME}}/README.md) (قيد التنفيذ) |",
+  "logRow": "| {{DATE}} | {{NAME}} | بداية المشروع بـ `New-Project.ps1`: {{NAME_AR}} (أساسي `{{PRIMARY}}` وثانوي `{{SECONDARY}}`)، من الأصل `{{BASE_APP}}`. الناتج هيطلع في `{{OUTPUT_NAME}}`. |"
+}

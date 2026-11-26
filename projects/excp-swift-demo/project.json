@@ -1,8 +1,9 @@
 {
   "name": "excp-swift-demo",
   "description": "Retheme of the 'Abir Alqarat' recruitment app assets to Excellent Protection (الحماية المتميزة)",
-  "sourceDir": "input",
-  "outputDir": "output",
+  "baseApp": "aber-alqarat",
+  "sourceDir": "{root}/base-assets/aber-alqarat",
+  "outputDir": "{root}/clients/excp-swift-demo/excp swift demo assets",
   "legacyNoBrandFonts": true,
 
   "brand": {

@@ -1,8 +1,9 @@
 {
   "name": "CHANGE-ME",
   "description": "Retheme of <old app> assets to <new brand>",
-  "sourceDir": "input",
-  "outputDir": "output",
+  "baseApp": "aber-alqarat",
+  "sourceDir": "{root}/base-assets/aber-alqarat",
+  "outputDir": "{root}/clients/CHANGE-ME/assets.CHANGE-ME",
 
   "brand": {
     "nameAr": "اسم الشركة بالعربي",
