@@ -27,7 +27,7 @@ param(
     [Parameter(Mandatory = $true)][string]$FontEn,
     [Parameter(Mandatory = $true)][string]$FontEnSource,
     [string]$BaseApp = 'aber-alqarat',
-    [string]$OutputName        # default: assets.<name>
+    [string]$OutputName        # delivery (zip) name, default: assets.<name>; the output itself is <root>/clients/<name>
 )
 . (Join-Path $PSScriptRoot '_common.ps1')
 
@@ -63,7 +63,7 @@ $json = Set-JsonValue $json 'name' $Name
 $json = Set-JsonValue $json 'description' "Retheme of the '$BaseApp' app assets to $NameEn"
 $json = Set-JsonValue $json 'baseApp' $BaseApp
 $json = Set-JsonValue $json 'sourceDir' "{root}/base-assets/$BaseApp"
-$json = Set-JsonValue $json 'outputDir' "{root}/clients/$Name/$OutputName"
+$json = Set-JsonValue $json 'outputDir' "{root}/clients/$Name"
 $json = Set-JsonValue $json 'nameAr' $NameAr
 $json = Set-JsonValue $json 'nameEn' $NameEn
 $json = Set-JsonValue $json 'primary' $values.PRIMARY
@@ -109,7 +109,7 @@ Add-AfterLastTableRow (Join-Path $script:RepoRoot 'README.md') '^\| `' '^## ' (E
 Write-Host "Project '$Name' created:" -ForegroundColor Green
 Write-Host "  config : projects\$Name\project.json"
 Write-Host "  docs   : docs\projects\$Name\README.md, handoff.md"
-Write-Host "  output : $root\clients\$Name\$OutputName (written by Invoke-Retheme)"
+Write-Host "  output : $root\clients\$Name (written by Invoke-Retheme; deliver it as $OutputName.zip)"
 Write-Host 'Next:'
 Write-Host "  - put the logo (logo-color.png / logo-white.png or an SVG) and the font files in projects\$Name\brand\"
 $base = Join-Path $root "base-assets\$BaseApp"

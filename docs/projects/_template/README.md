@@ -7,7 +7,7 @@
 | **الأصل** | `{{BASE_APP}}` (فولدر `base-assets\{{BASE_APP}}`) |
 | **الهوية الجديدة** | {{NAME_AR}} ({{NAME_EN}}) |
 | **التاريخ** | {{DATE}} |
-| **اسم فولدر الناتج** | `{{OUTPUT_NAME}}` |
+| **الناتج** | `clients/{{NAME}}/` على جهازك، وبيتسلم `{{OUTPUT_NAME}}.zip` |
 | **مصدر اللوجو** | — |
 | **الإعدادات** | [`projects/{{NAME}}/project.json`](../../../projects/{{NAME}}/project.json) |
 | **قائمة الملفات كاملة** | [changed-files.md](changed-files.md) (بتتولّد بـ `Compare-Assets.ps1`) |

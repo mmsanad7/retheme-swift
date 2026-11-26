@@ -3,7 +3,7 @@
   "description": "Retheme of the 'Abir Alqarat' recruitment app assets to Jusur (جسور الموارد)",
   "baseApp": "aber-alqarat",
   "sourceDir": "{root}/base-assets/aber-alqarat",
-  "outputDir": "{root}/clients/jusur-almawared/assets.jusuralmawared",
+  "outputDir": "{root}/clients/jusur-almawared",
   "addFiles": [
     { "from": "brand/Kufam.ttf",      "to": "fonts/Kufam-VariableFont_wght.ttf" },
     { "from": "brand/Montserrat.ttf", "to": "fonts/Montserrat-VariableFont_wght.ttf" }

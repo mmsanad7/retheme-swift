@@ -17,7 +17,7 @@
 .\tools\New-Project.ps1 -Name <name> -NameAr "<الاسم بالعربي>" -NameEn "<Name>" -Primary "#xxxxxx" -Secondary "#xxxxxx" `
     -FontAr <خط عربي> -FontArSource <رابط> -FontEn <خط إنجليزي> -FontEnSource <رابط>
 ```
-الأصل الافتراضي `-BaseApp aber-alqarat`، واسم فولدر الناتج الافتراضي `assets.<name>` (`-OutputName` لو عايز اسم تاني). بعد كده حط اللوجو وملفات الخطوط في `projects\<name>\brand\`، وكمّل خانات التوثيق اللي فيها `—` وانت ماشي في الخطوات.
+الأصل الافتراضي `-BaseApp aber-alqarat`، والناتج بيطلع في `clients\<name>\` على طول. اسم التسليم الافتراضي (اسم الـ zip) `assets.<name>`، و`-OutputName` لو عايز اسم تاني. بعد كده حط اللوجو وملفات الخطوط في `projects\<name>\brand\`، وكمّل خانات التوثيق اللي فيها `—` وانت ماشي في الخطوات.
 
 لو اللوجو SVG، اعمل منه ملفات PNG ونسخة بيضا ([ADR 0013](decisions/0013-svg-logos-stay-vector.md)):
 ```powershell

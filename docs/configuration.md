@@ -14,7 +14,7 @@
 | `description` | نص | وصف قصير |
 | `baseApp` | نص | التطبيق الأساسي اللي المشروع بادئ منه، واسمه هو اسم فولدره في `base-assets\` (النهارده `aber-alqarat`) |
 | `sourceDir` | مسار | فولدر الـ assets الأصلي، عادةً `{root}/base-assets/<baseApp>`. **ما بيتعدلش أبدًا** |
-| `outputDir` | مسار | الفولدر اللي هيطلع فيه الناتج، عادةً `{root}/clients/<name>/assets.<name>`. لازم يكون مختلف عن `sourceDir` |
+| `outputDir` | مسار | الفولدر اللي هيطلع فيه الناتج، عادةً `{root}/clients/<name>`. لازم يكون مختلف عن `sourceDir`، و`-Force` بيمسحه بالكامل قبل البناء |
 | `addFiles` | قائمة | (اختياري) `[{ "from": "brand/x.ttf", "to": "fonts/x.ttf" }]`: ملفات جديدة بتتضاف للناتج، زي خطوط الهوية. ما بتكتبش فوق ملف موجود ([ADR 0017](decisions/0017-deliver-brand-fonts-in-assets.md)) |
 
 ## `brand`

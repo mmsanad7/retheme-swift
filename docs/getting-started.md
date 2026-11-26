@@ -29,7 +29,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 D:\retheme-swift-project\
 ├── retheme-swift\                 ← الريبو
 ├── base-assets\aber-alqarat\      ← الـ assets الأصلية (مش بتتعدل)
-└── clients\<name>\                ← ناتج كل عميل
+└── clients\<name>\                ← ناتج كل عميل (الـ assets نفسها). متحطش فيه حاجة تانية، لأن البناء بـ -Force بيمسحه
 ```
 
 1. اعمل ملف **`workspace.local.json`** في جذر الريبو (متجاهل في git)، وفيه الفولدر الرئيسي على جهازك:
@@ -46,7 +46,7 @@ D:\retheme-swift-project\
 ### نقل جهاز عليه مشاريع قديمة (مرة واحدة)
 لو كنت شغال قبل الترتيب ده بـ `project.local.json`:
 1. انقل الـ assets الأصلية لـ `base-assets\aber-alqarat\`.
-2. انقل ناتج كل مشروع لـ `clients\<name>\` بنفس اسم فولدره (`clients\jusur-almawared\assets.jusuralmawared` و`clients\excp-swift-demo\excp swift demo assets`).
+2. حط ناتج كل مشروع **جوه** `clients\<name>\` على طول، من غير فولدر جواه: `clients\jusur-almawared\` (206 ملف) و`clients\excp-swift-demo\` (204 ملف).
 3. اعمل `workspace.local.json`، وامسح `project.local.json` القديم من كل مشروع.
 4. اتأكد: `.\tools\Compare-Assets.ps1 -Project jusur-almawared` لازم يطلع `missing 0 | extra 0`.
 

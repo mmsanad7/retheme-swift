@@ -13,8 +13,9 @@
    <root>\
    ├── retheme-swift\                 ← الريبو
    ├── base-assets\<baseApp>\         ← الأصل (مش بيتعدل)
-   └── clients\<name>\<outputName>\   ← الناتج
+   └── clients\<name>\                ← الناتج (الـ assets نفسها، من غير فولدر جواه)
    ```
+   فولدر العميل في `clients\` **هو** الـ assets. وقت التسليم بيتعمله zip باسم التسليم (مثلًا `assets.jusuralmawared.zip`). ومتحطش أي حاجة تانية جواه، لأن `Invoke-Retheme -Force` بيمسح الفولدر كله ويبنيه من الأول.
    كل جهاز بيحدد `<root>` مرة واحدة في `workspace.local.json` في جذر الريبو (متجاهل في git): `{ "root": "D:/retheme-swift-project" }`.
 2. **`{root}` في `project.json`:** `sourceDir` و`outputDir` بيتكتبوا بـ `{root}/...`، فنفس الإعدادات بتشتغل على أي جهاز. `project.local.json` لسه موجود، وليه الأولوية لو جهاز محتاج استثناء.
 3. **`baseApp`:** اسم التطبيق الأساسي اللي المشروع بادئ منه. النهارده `aber-alqarat` (الـ assets الأصلية بتاعة "عابر القارات")، ولو الأساس اتغير بعدين، بيتغير في الخانة دي بس.
