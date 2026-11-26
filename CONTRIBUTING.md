@@ -1,5 +1,15 @@
 # المساهمة
 
+## ⚖️ القواعد ملزمة من أول سحب
+
+أي حد بيشتغل على الريبو ملزم بكل القواعد والقرارات ([ADR 0015](docs/decisions/0015-binding-rules-enforced.md)):
+- [CLAUDE.md](CLAUDE.md) و[principles.md](docs/principles.md) وكل الـ ADRs المقبولة في [docs/decisions/](docs/decisions/README.md).
+- **`git pull` قبل أي تعديل، و`git push` بعده.**
+- **أي اسم ملف أو عنصر في رسالة أو رد يكون رابط.**
+- تغيير أي قاعدة بيكون بـ ADR جديد وبموافقة التيم ليد.
+
+القواعد دي بتتطبق أوتوماتيك: Claude Code بيعمل pull ويمنع إنهاء الجلسة من غير push، والـ git hooks بترفض أي commit مخالف، وGitHub Actions بيفحص كل push. لما Claude Code يطلب موافقة على الـ hooks أول مرة، **وافق**.
+
 ## إضافة مشروع (عميل) جديد
 1. اعمل branch جديد: `git checkout -b project/<name>`
 2. `Copy-Item projects\_template projects\<name> -Recurse`

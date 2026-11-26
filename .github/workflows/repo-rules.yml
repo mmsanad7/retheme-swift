@@ -1,0 +1,16 @@
+name: repo-rules
+
+# Server-side enforcement of docs/decisions/0015-binding-rules-enforced.md:
+# runs on every push and PR, even if local hooks were skipped.
+on:
+  push:
+  pull_request:
+
+jobs:
+  rules:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check repo rules
+        shell: powershell
+        run: .\tools\Test-RepoRules.ps1

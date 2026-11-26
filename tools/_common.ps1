@@ -6,6 +6,11 @@ $ErrorActionPreference = 'Stop'
 $script:RepoRoot = Split-Path -Parent $PSScriptRoot
 $script:Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
+# Activate the repo git hooks on first use of any tool (docs/decisions/0015-binding-rules-enforced.md).
+if ((git -C $script:RepoRoot config core.hooksPath 2>$null) -ne '.githooks') {
+    git -C $script:RepoRoot config core.hooksPath .githooks 2>$null
+}
+
 function Import-Recolor {
     if (-not ('Recolor' -as [type])) {
         Add-Type -Path (Join-Path $PSScriptRoot 'Recolor.cs') -ReferencedAssemblies System.Drawing

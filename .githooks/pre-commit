@@ -1,0 +1,4 @@
+#!/bin/sh
+# Blocks commits that break the repo rules (docs/decisions/0015-binding-rules-enforced.md).
+# Activated automatically: core.hooksPath=.githooks is set by tools/_common.ps1 and the Claude Code session hook.
+exec powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(git rev-parse --show-toplevel)/tools/Test-RepoRules.ps1" -Staged

@@ -53,3 +53,13 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ## 5. لو بتستخدم Claude Code
 
 افتح الريبو في Claude Code. ملف `CLAUDE.md` وملفات `memory/` بيتقروا لوحدهم، فهيعرف القواعد والتاريخ من غير ما تشرح من الأول.
+
+أول مرة هيطلب موافقة على الـ hooks اللي في [.claude/settings.json](../.claude/settings.json). **وافق**، لأنها بتعمل `git pull` أول كل جلسة، وبتفعّل الـ git hooks، ومش بتخلّي الجلسة تخلص من غير push ([ADR 0015](decisions/0015-binding-rules-enforced.md)).
+
+## 6. القواعد ملزمة
+
+كل القواعد والقرارات ملزمة من أول سحب ([CONTRIBUTING.md](../CONTRIBUTING.md)). لو بتشتغل من غير Claude Code، الـ git hooks بتتفعّل أول ما تشغّل أي أداة من `tools/`. ولو عايز تفعّلها على طول:
+
+```powershell
+git config core.hooksPath .githooks
+```

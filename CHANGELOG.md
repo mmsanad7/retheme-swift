@@ -7,6 +7,7 @@
 ### اتضاف
 - [`docs/projects/jusur-almawared/handoff.md`](docs/projects/jusur-almawared/handoff.md): ملف تسليم لفريق التطوير، وخطوة الـ handoff اتضافت في [workflow.md](docs/workflow.md).
 - قواعد الفريق في [memory/user-preferences.md](memory/user-preferences.md): pull قبل أي تعديل وpush بعده، والروابط في الردود.
+- فرض القواعد أوتوماتيك ([ADR 0015](docs/decisions/0015-binding-rules-enforced.md)): [tools/Test-RepoRules.ps1](tools/Test-RepoRules.ps1)، و[.githooks/pre-commit](.githooks/pre-commit)، وhooks لـ Claude Code في [.claude/settings.json](.claude/settings.json)، و[GitHub Actions](.github/workflows/repo-rules.yml). `_common.ps1` بيفعّل الـ git hooks أول ما أي أداة تشتغل.
 
 ## [1.1.0] - 2026-11-25
 
